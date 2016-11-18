@@ -31,3 +31,13 @@
 # Debug files
 *.dSYM/
 *.su
+
+# macOS
+*.dmg
+
+# Zipped files
+*.zip 
+*.7z
+*.tgz
+*.tar
+*.gz
