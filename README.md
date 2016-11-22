@@ -118,7 +118,7 @@ sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
 
 ### Instalação Concluída
 
-Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/``` ou ```http://<ip>:8983/```.
+Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip>:8983/solr```.
 
 #### Fedora
 
