@@ -1,4 +1,4 @@
-# Apache Solr: Instrodução e Instalação
+# Apache Solr: Introdução e Instalação
 
 O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob o [Apache Lucene](http://lucene.apache.org/)(TM).
 
@@ -56,13 +56,13 @@ $ sudo dnf install java-1.8.0-openjdk.x86_64
 #### Atualizando a distribuição
 
 ```bash
-$ sudo apt-get update && apt-get -y upgrade
+$ sudo apt-get update && apt-get upgrade
 ```
 
 #### Instalando o JRE
 
 ```bash
-$ sudo apt-get -y install default-jre
+$ sudo apt-get install default-jre
 ```
 
 _Se quiser suprimir as perguntas de confirmação do gerenciado de pacotes use a opção ```-y```. Exemplo: ```sudo apt-get -y install default-jre``` _
@@ -110,7 +110,7 @@ Após
 tar xzf /tmp/solr-6.3.0.tgz solr-6.3.0/bin/install_solr_service.sh --strip-components=2
 ```
 
-Se estiver instalando o Solr no Fedora, certifique-se de ter o pacote [lsof](https://admin.fedoraproject.org/pkgdb/package/rpms/lsof/) instalado antes de executar o script de instalação.
+Se estiver instalando o Solr no Fedora, certifique-se de ter o pacote [lsof](https://admin.fedoraproject.org/pkgdb/package/rpms/lsof/) instalado antes de executar o script de instalação. Para verificar se o lsof está instalado use o comando ```lsof -v```.
 
 ```bash
 sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
@@ -118,15 +118,16 @@ sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
 
 ### Instalação Concluída
 
-Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip>:8983/solr```.
+Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip>:8983/solr``` se for acessar externamente.
 
 #### Fedora
 
 O Fedora vem com o [FirewallD](https://fedoraproject.org/wiki/FirewallD) ativado por padrão, então, caso você não consiga acesso externo ao painel de administração, verifique se o firewall está ativado. Se for o caso, você pode desativar ou adicionar excessão(ões) as regras do firewall.
 
 ```bash
-sudo systemctl status firewalld
+sudo systemctl stop firewalld
 ```
+
 
 
 #### Como manipular o serviço:
