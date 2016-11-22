@@ -1,12 +1,16 @@
-# Instruções para instalação, configuração e integração do Apache Solr.
+# Apache Solr: Instrodução e Instalação
 
 O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob o [Apache Lucene](http://lucene.apache.org/)(TM).
 
-### Quem está usando Solr?
+### Quem está usando Solr
 
 Milhares de empresas usam o Solr para indexar conteúdo, provendo uma poderosa ferramenta de busca ao seus usuários. Entre essas empresas estão gigantes como a Apple, Netflix, Disney, AT&T, CNET, Cisco, AOL, NASA, MTV, Goldman Sachs, Cloudspace, Sears, GameSpot, eHarmony, TicketMaster, The Guardian, eBay, StubHub, IBM, Adobe, Best Buy, DuckDuckGo e o Instagram.
 
 Pela lista, já dá pra ter ideia do nível de qualidade dessa ferramenta, que é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está em sua versão 6.3.0, que foi lançada em 8 de novembro de 2016, conforme a _[release notes](http://lucene.apache.org/solr/news.html)_. Para ver as principais carascteristicas dessa versão são:
+
+### O que eu posso fazer com Solr
+
+Indexar sites inteiros, documentos (PDF, Word, Excel), 
 
 ## Instalação
 
@@ -27,20 +31,25 @@ $ sudo yum update && yum -y upgrade
 #### Atualizando a distribuição
 
 ```bash
-$ sudo apt-get update && apt-get -y upgrade
+$ sudo apt-get update && apt-get upgrade
 ```
 
 #### Instalando o JRE
 
-### Instalando o Java 1.8 no Fedora 24
+### Instalando o Java 1.8 no Fedora 24 (Server)
 
 #### Atualizando a distribuição
 
 ```bash
-$ sudo dnf update && dnf -y upgrade
+$ sudo dnf update
+$ sudo dnf upgrade
 ```
 
 #### Instalando o JRE
+
+```bash
+$ sudo dnf install java-1.8.0-openjdk.x86_64
+```
 
 ### Instalando o Java 1.8 no Ubuntu 16.10/16.04.1 LTS (Yakkety Yak/Xenial Xerus)
 
@@ -56,11 +65,11 @@ $ sudo apt-get update && apt-get -y upgrade
 $ sudo apt-get -y install default-jre
 ```
 
-<small>A opção ```-y``` suprime as perguntas de confirmação do gerenciado de pacotes.</small>
+_Se quiser suprimir as perguntas de confirmação do gerenciado de pacotes use a opção ```-y```. Exemplo: ```sudo apt-get -y install default-jre``` _
 
 ### Verificando a versão do Java
 
-Concluída a instalação, verifique se a versão instalada é igual ou superior a versão mínima exigida. Nesse caso, a versão 1.8.
+Concluída a instalação, verifique se a versão instalada é igual ou superior a versão mínima exigida. Nesse caso, a versão ```1.8```.
 
 ```bash
 $ java -version
@@ -82,7 +91,7 @@ Com o comando acima, foi instruído ao wget para salvar o arquivo na pasta ```/t
 
 #### Descompactando
 
-<small>Se você deseja ter o Solr instalado como um serviço no seu sistema, veja a seção [Instalando o Solr como serviço](#instalando-o-solr-como-serviço).</small>
+<small>Se você deseja instalar o Solr em um ambiente de produção, veja a seção [Instalando o Solr como serviço](#instalando-o-solr-como-serviço).</small>
 
 ```bash
 $
@@ -91,15 +100,17 @@ $
 #### Iniciando o Solr
 
 
-### Instalando o Solr como serviço
+### Instalando o Solr em ambiente de produção
 
 Para facilitar a vida dos Administradores de Sistemas, o Solr vem com um script que procede a instalação de formar que o Solr funcionará como um serviço.
 
 Após
 
 ```bash
-tar xzf solr-6.3.0.tgz solr-6.3.0/bin/install_solr_service.sh --strip-components=2
+tar xzf /tmp/solr-6.3.0.tgz solr-6.3.0/bin/install_solr_service.sh --strip-components=2
 ```
+
+Se estiver instalando o Solr no Fedora, certifique-se de ter o pacote [lsof](https://admin.fedoraproject.org/pkgdb/package/rpms/lsof/) instalado antes de executar o script de instalação.
 
 ```bash
 sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
@@ -108,6 +119,15 @@ sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
 ### Instalação Concluída
 
 Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/``` ou ```http://<ip>:8983/```.
+
+#### Fedora
+
+O Fedora vem com o [FirewallD](https://fedoraproject.org/wiki/FirewallD) ativado por padrão, então, caso você não consiga acesso externo ao painel de administração, verifique se o firewall está ativado. Se for o caso, você pode desativar ou adicionar excessão(ões) as regras do firewall.
+
+```bash
+sudo systemctl status firewalld
+```
+
 
 #### Como manipular o serviço:
 
