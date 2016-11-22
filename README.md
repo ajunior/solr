@@ -10,18 +10,42 @@ Pela lista, já dá pra ter ideia do nível de qualidade dessa ferramenta, que �
 
 Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) 1.8 ou superior para que o Solr funcione. A instalação do Solr é bem simples, mas em algumas distribuições Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação no Windows não será demonstrado neste documento.
 
-### Instalando o Java 1.8 no CentOS 7 ()
-
-### Instalando o Java 1.8 no Fedora 24
-
-### Instalando o Java 1.8 no Debian 8 (Jessie)
-
-### Instalando o Java 1.8 no Ubuntu 16.10/16.04.1 (Yakkety Yak/Xenial Xerus)
+### Instalando o Java 1.8 no CentOS 7 (1511)
 
 #### Atualizando a distribuição
 
 ```bash
-$ sudo apt-get -y update && apt-get -y upgrade
+$ sudo yum update && yum -y upgrade
+```
+
+#### Instalando o JRE
+
+### Instalando o Java 1.8 no Debian 8 (Jessie)
+
+#### Atualizando a distribuição
+
+```bash
+$ sudo apt-get update && apt-get -y upgrade
+```
+
+#### Instalando o JRE
+
+### Instalando o Java 1.8 no Fedora 24
+
+#### Atualizando a distribuição
+
+```bash
+$ sudo dnf update && dnf -y upgrade
+```
+
+#### Instalando o JRE
+
+### Instalando o Java 1.8 no Ubuntu 16.10/16.04.1 LTS (Yakkety Yak/Xenial Xerus)
+
+#### Atualizando a distribuição
+
+```bash
+$ sudo apt-get update && apt-get -y upgrade
 ```
 
 #### Instalando o JRE
