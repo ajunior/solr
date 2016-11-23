@@ -40,19 +40,18 @@ $ su -c "apt-get update && apt-get upgrade"
 $ su -c "apt-get install software-properties-common"
 ```
 
-#### Adicionando o repositório Webupd8
+#### Adicionando o repositório Backports
 
 ```bash
-$ su -c "apt-add-repository ppa:webupd8team/java"
-```
-
-#### Atualizando a lista de fontes para incluir o novo repositório adicionado
-
-```bash
+$ su -c "echo \"deb http://ftp.br.debian.org/debian jessie-backports main\" >> /etc/apt/sources.list"
 $ su -c "apt-get update"
 ```
 
 #### Instalando o JRE
+
+```bash
+$ su -c "apt-get install openjdk-8-jre"
+```
 
 ### Instalando o Java 1.8 no Fedora 24 (Server)
 
