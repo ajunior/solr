@@ -21,7 +21,8 @@ O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenv
 #### Atualizando a distribuição
 
 ```bash
-$ sudo yum update && yum upgrade
+$ sudo yum update
+$ sudo yum upgrade
 ```
 
 #### Instalando o JRE
@@ -32,12 +33,6 @@ $ sudo yum update && yum upgrade
 
 ```bash
 $ su -c "apt-get update && apt-get upgrade"
-```
-
-#### Instalando o apt-add-repository
-
-```bash
-$ su -c "apt-get install software-properties-common"
 ```
 
 #### Adicionando o repositório Backports
@@ -82,7 +77,7 @@ $ sudo apt-get update && apt-get upgrade
 $ sudo apt-get install default-jre
 ```
 
-_Se quiser suprimir as perguntas de confirmação do gerenciado de pacotes use a opção ```-y```. Exemplo: ```sudo apt-get -y install default-jre``` _
+_Se quiser suprimir as perguntas de confirmação do gerenciador de pacotes use a opção ```-y```. Exemplo: ```sudo apt-get -y install default-jre``` _
 
 ### Verificando a versão do Java
 
@@ -99,7 +94,7 @@ Caso esteja usando Proxy, talvez seja necessário configurar as informações re
 - __apt__  - ```/etc/apt/apt.conf```
 - __dnf__  - ```/etc/dnf/dnf.conf```
 - __wget__ - ```/etc/wgetrc```
-- __yum__  - ```/etc/yum/yum.conf```
+- __yum__  - ```/etc/yum.conf```
 
 ```bash
 $ export http_proxy=<ip>:<porta>
@@ -152,7 +147,9 @@ sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
 
 Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip ou domínio>:8983/solr``` se for acessar remotamente o servidor que está hospedando o Solr.
 
-#### Fedora
+### Troubleshotting
+
+#### Firewall
 
 O Fedora vem com o [FirewallD](https://fedoraproject.org/wiki/FirewallD) ativado por padrão, então, caso você não consiga acesso externo ao painel de administração, verifique se o firewall está ativado. Se for o caso, você pode desativar ou adicionar excessão(ões) as regras do firewall.
 
@@ -162,7 +159,7 @@ sudo systemctl stop firewalld
 
 
 
-#### Como manipular o serviço:
+### Como manipular o serviço:
 
 | Comando | Descrição |
 | ------- | --------- |
