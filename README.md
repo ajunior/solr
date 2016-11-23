@@ -14,14 +14,14 @@ Indexar sites inteiros, documentos (PDF, Word, Excel),
 
 ## Instalação
 
-Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) 1.8 ou superior para que o Solr funcione. A instalação do Solr é bem simples, mas em algumas distribuições Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação no Windows não será demonstrado neste documento.
+O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) 1.8 ou superior. A instalação do Solr é bem simples, mas em algumas distribuições Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação no Windows e no macOS não serão demonstrados neste documento.
 
 ### Instalando o Java 1.8 no CentOS 7 (1511)
 
 #### Atualizando a distribuição
 
 ```bash
-$ sudo yum update && yum -y upgrade
+$ sudo yum update && yum upgrade
 ```
 
 #### Instalando o JRE
@@ -31,7 +31,25 @@ $ sudo yum update && yum -y upgrade
 #### Atualizando a distribuição
 
 ```bash
-$ sudo apt-get update && apt-get upgrade
+$ su -c "apt-get update && apt-get upgrade"
+```
+
+#### Instalando o apt-add-repository
+
+```bash
+$ su -c "apt-get install software-properties-common"
+```
+
+#### Adicionando o repositório Webupd8
+
+```bash
+$ su -c "apt-add-repository ppa:webupd8team/java"
+```
+
+#### Atualizando a lista de fontes para incluir o novo repositório adicionado
+
+```bash
+$ su -c "apt-get update"
 ```
 
 #### Instalando o JRE
@@ -73,6 +91,21 @@ Concluída a instalação, verifique se a versão instalada é igual ou superior
 
 ```bash
 $ java -version
+```
+
+### Proxy
+
+Caso esteja usando Proxy, talvez seja necessário configurar as informações referentes ao proxy nos arquivos de configuração do ```gerenciador de pacotes``` e do ```wget```. Veja abaixo onde encontrar esses arquivos.
+
+- __apt__  - ```/etc/apt/apt.conf```
+- __dnf__  - ```/etc/dnf/dnf.conf```
+- __wget__ - ```/etc/wgetrc```
+- __yum__  - ```/etc/yum/yum.conf```
+
+```bash
+$ export http_proxy=<ip>:<porta>
+$ export https_proxy=<ip>:<porta>
+$ export ftp_proxy=<ip>:<porta>
 ```
 
 ### Instalando o Solr
@@ -118,7 +151,7 @@ sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
 
 ### Instalação Concluída
 
-Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip>:8983/solr``` se for acessar externamente.
+Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip ou domínio>:8983/solr``` se for acessar remotamente o servidor que está hospedando o Solr.
 
 #### Fedora
 
