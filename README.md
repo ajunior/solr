@@ -172,8 +172,28 @@ sudo systemctl stop firewalld
 | ```service solr stop``` | Parar o serviço. |
 | ```service solr restart``` | Reiniciar o serviço. |
 
-## Indexando PDFs
+## Indexando documentos
 
 A indexação de conteúdos é feito pelo programa ```post```, que fica localizado na pasta ```bin```, dentro do diterório do Solr.
+
+### PDFs
+
+Indexando um PDF específico:
+
+```bash
+$ bin/post -c documento.pdf
+```
+
+Você também pode indexar todos os PDFs contidos numa pasta:
+
+```bash
+$ bin/post -c pasta/
+```
+
+### Sites
+
+
+
+## Configurações específicas do TCE-PB
 
 
