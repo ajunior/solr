@@ -4,22 +4,54 @@
         <meta charset="UTF8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Caixa de busca usando Apache Solr</title>
-        <!-- O uso do Bootstrap e Font Awesome foi meramente para fins estéticos -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">        
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">
+        <!-- O uso do Normalize, Bootstrap e Font Awesome foi meramente para fins estéticos -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">                
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
     </head>
     <body>
         <!-- caixa de texto de busca -->
-        <div class="container"> 
-            <form>
-                <label>Busca</label>
-                <input name="query" type="text">
-                <input value="Go" type="submit">
-            </form>
-        </div>
-        <!-- resultado da busca -->
-        <div>
-            
+        <div class="container">
+            <div class="row jumbotron">
+                <h3>Busca textual usando Apache Solr<h3>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
+                    </div>
+                    
+                    <div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="checkboxSuccess" value="option1">
+                                Incluir conteúdo do Diário Oficial
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="checkbox">
+                            <label>
+                            <input type="checkbox" id="checkboxWarning" value="option1">
+                            Incluir conteúdo dos Atos Normativos
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="checkboxError" value="option1">
+                                Incluir conteúdo do site
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+            <!-- resultado da busca -->
+            <div class="row">
+                
+            </div>
         </div>
     </body>
 </html>

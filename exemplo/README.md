@@ -14,5 +14,5 @@ Entre na pasta ```exemplo``` e abra, em qualquer navegador, o arquivo ```index.h
 
 ## Considerações
 
-- Baseado no exemplo do [SolJson](https://wiki.apache.org/solr/SolJSON).
-- O uso do [Bootstrap](http://getbootstrap.com/) e da [Font Awesome](http://fontawesome.io/) foi meramente para fins estéticos.
+- Baseado no exemplo do [SolJSON](https://wiki.apache.org/solr/SolJSON).
+- O uso do [Normalize](https://necolas.github.io/normalize.css/), [Bootstrap](http://getbootstrap.com/) e da [Font Awesome](http://fontawesome.io/) foi meramente para fins estéticos.
