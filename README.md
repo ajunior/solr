@@ -10,7 +10,11 @@ Pela lista, já dá pra ter ideia do nível de qualidade dessa ferramenta, que �
 
 ### O que eu posso fazer com Solr
 
-Indexar sites inteiros, documentos (PDF, Word, Excel), 
+Basicamente, indexar documentos e sites afim de facilitar a busca textual em seus conteúdos.
+
+### Licença
+
+O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), que resumidamente permite o __livre uso, redistribuição e alteração, sem exigência de reciprocidade__.
 
 ## Instalação
 
@@ -159,7 +163,7 @@ sudo systemctl stop firewalld
 
 
 
-### Como manipular o serviço:
+### Como manipular o serviço
 
 | Comando | Descrição |
 | ------- | --------- |
