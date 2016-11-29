@@ -95,7 +95,7 @@ _Se quiser suprimir as perguntas de confirmação do gerenciador de pacotes use 
 
 ### Verificando a versão do Java
 
-Concluída a instalação, verifique se a versão instalada é igual ou superior a versão mínima exigida. Nesse caso, a versão ```1.8```.
+Concluída a instalação, verifique se a versão instalada é igual ou superior a versão mínima exigida. Nesse caso, a versão ```1.8``` do JRE.
 
 ```bash
 $ java -version
@@ -128,7 +128,7 @@ Não há pacotes da versão 6 do Solr disponíveis nas distribuições, portanto
 $ sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -O /tmp/solr-6.3.0.tgz
 ```
 
-Com o comando acima, foi instruído ao wget para salvar o arquivo na pasta ```/tmp```.
+O arquivo baixado estará salvo na pasta ```/tmp```.
 
 #### Descompactando
 
