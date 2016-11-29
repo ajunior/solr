@@ -148,13 +148,27 @@ Para facilitar a vida dos Administradores de Sistemas, o Solr vem com um script 
 Após
 
 ```bash
-tar xzf /tmp/solr-6.3.0.tgz solr-6.3.0/bin/install_solr_service.sh --strip-components=2
+$ tar xzf /tmp/solr-6.3.0.tgz solr-6.3.0/bin/install_solr_service.sh --strip-components=2
 ```
 
-Se estiver instalando o Solr no Fedora, certifique-se de ter o pacote [lsof](https://admin.fedoraproject.org/pkgdb/package/rpms/lsof/) instalado antes de executar o script de instalação. Para verificar se o lsof está instalado use o comando ```lsof -v```.
+Se estiver instalando o Solr no Fedora ou no CentOS, certifique-se de ter o pacote [lsof](https://admin.fedoraproject.org/pkgdb/package/rpms/lsof/) instalado antes de executar o script de instalação. Para verificar se o ```lsof``` já está instalado use o comando ```lsof -v```. Caso precise instalar esse pacote, siga as instruções abaixo:
+
+#### Instalando lsof no CentOS
 
 ```bash
-sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
+$ sudo yum install lsof
+```
+
+#### Instalando lsof no Fedora
+
+```bash
+$ sudo dnf install lsof
+```
+
+Em seguida, proceda com a execução do script de instalação do Solr.
+
+```bash
+$ sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
 ```
 
 ### Instalação Concluída
