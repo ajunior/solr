@@ -25,11 +25,19 @@ O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenv
 #### Atualizando a distribuição
 
 ```bash
+$ sudo yum check-update
 $ sudo yum update
-$ sudo yum upgrade
 ```
 
+_Se quiser suprimir as perguntas de confirmação do gerenciador de pacotes use a opção ```-y```. Exemplo: ```sudo yum -y update```._
+
 #### Instalando o JRE
+
+```bash
+$ sudo yum install java-1.8.0-openjdk.x86_64
+```
+
+_Se quiser suprimir as perguntas de confirmação do gerenciador de pacotes use a opção ```-y```. Exemplo: ```sudo yum -y install java-1.8.0-openjdk.x86_64```._
 
 ### Instalando o Java 1.8 no Debian 8 (Jessie)
 
@@ -38,6 +46,8 @@ $ sudo yum upgrade
 ```bash
 $ su -c "apt-get update && apt-get upgrade"
 ```
+
+_Se quiser suprimir as perguntas de confirmação do gerenciador de pacotes use a opção ```-y```. Exemplo: ```sudo apt-get -y upgrade```._
 
 #### Adicionando o repositório Backports
 
@@ -81,7 +91,7 @@ $ sudo apt-get update && apt-get upgrade
 $ sudo apt-get install default-jre
 ```
 
-_Se quiser suprimir as perguntas de confirmação do gerenciador de pacotes use a opção ```-y```. Exemplo: ```sudo apt-get -y install default-jre``` _
+_Se quiser suprimir as perguntas de confirmação do gerenciador de pacotes use a opção ```-y```. Exemplo: ```sudo apt-get -y install default-jre```._
 
 ### Verificando a versão do Java
 
