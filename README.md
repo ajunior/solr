@@ -214,9 +214,12 @@ Você também pode indexar todos os PDFs contidos numa pasta:
 $ bin/post -c pasta/
 ```
 
-### Sites
+### Indexando Sites
 
-
+```bash
+$ sudo su - solr -c "/opt/solr/bin/solr create -c gettingstarted -n data_driven_schema_configs"
+$ bin/post -c corename https://siteurl.com -recursive 2 -delay 1
+```
 
 ## Configurações específicas do TCE-PB
 
