@@ -1,18 +1,45 @@
-body {
-    font-family: 'Roboto', sans-serif; 
-}
+ html {
+     font-family: GillSans, Calibri, Trebuchet, sans-serif;
+ }
+ 
+ #solr-logo {
+     width: 80px;
+     height: 40px;
+ }
+ 
+ #search {
+     font-size: 16px;
+     placehold-color: white;
+ }
+ 
+ #nav-logo {
+     margin-top: 20px;
+     margin-left: 10px;
+     margin-bottom: 70px;
+ }
+ 
+ ::-webkit-input-placeholder {
+     color: whitesmoke;
+ }
+ 
+ :-moz-placeholder {
+     /* Firefox 18- */
+     color: whitesmoke;
+ }
+ 
+ ::-moz-placeholder {
+     /* Firefox 19+ */
+     color: whitesmoke;
+ }
+ 
+ :-ms-input-placeholder {
+     color: whitesmoke;
+ }
+ 
+ #texto {
+     font-size: 20px;
+ }
 
-#solr-logo { 
-    width: 80px;
-    height: 40px;
-}
-
-#search {
-    font-size: 16px;
-}
-
-#nav-logo {
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-bottom: 70px;
-}
+ .flow-text {
+     font-size: 14px;
+ }

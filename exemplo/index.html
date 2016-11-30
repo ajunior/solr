@@ -1,85 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt">
-    <head>
-        <meta charset="UTF8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Apache Solr - Aplicação Teste</title>
-        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="css/normalize.css">
-        
-        <!--Import Google Icon Font-->
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-        
-        
-        
-        
-        
-        <!-- O uso do Normalize, Bootstrap e Font Awesome foi meramente para fins estéticos -->
-        
-        
-        
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">                
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
-    </head>
-    <body>
-        <header class="container-fluid">
-            <div id="nav-logo" class="row">
-                <div class="col m10">
-                    <a href="http://lucene.apache.org/solr">
-                        <img id="solr-logo" alt="Brand" src="img/Solr_Logo_on_white.png">
-                    </a>
-                </div>
-                <!--
+
+<head>
+    <meta charset="UTF8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apache Solr - Aplicação Teste</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+
+
+
+
+    <!-- O uso do Normalize, Bootstrap e Font Awesome foi meramente para fins estéticos -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <header class="container-fluid">
+        <div id="nav-logo" class="row">
+            <div class="col m10">
+                <a href="http://lucene.apache.org/solr">
+                    <img id="solr-logo" alt="Brand" src="img/Solr_Logo_on_white.png">
+                </a>
+            </div>
+            <!--
                 <div class="col m2"><span class="flow-text">made with <img src="img/heart.svg"> by adjamilton junior.</span></div>
                 -->
-            </div>   
-        </header>
-        <!-- caixa de texto de busca -->
+        </div>
+    </header>
+    <!-- caixa de texto de busca -->
+    <div class="container">
+        <div class="row card-panel grey lighten-3">
+            <p id="texto" class="flow-text">Busca textual usando Apache Solr</p>
+            <nav>
+                <div class="nav-wrapper">
+                    <form>
+                        <div class="input-field">
+                            <input id="search" type="search" placeholder="Digite o(s) termo(s) a ser(em) pesquisado(s) e pressione a tecla Enter" required>
+                            <label for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <!-- resultado da busca -->
         <div class="container">
-            <div class="row jumbotron">
-                <h3>Busca textual usando Apache Solr<h3>
-                <nav>
-                    <div class="nav-wrapper">
-                        <form>
-                            <div class="input-field">
-                                <input id="search" type="search" required>
-                                <label for="search"><i class="material-icons">search</i></label>
-                                <i class="material-icons">close</i>
-                            </div>
-                        </form>
-                    </div>
-                </nav>          
-            </div>
-            <!-- resultado da busca -->
-            <div class="container">
-                <div class="row">
-
+            <div class="row">
+                <div class="container">
+                    <p class="flow-text">8 documento(s) encontrado(s) com o(s) termo(s) especificado(s).</p>
+                </div>
+                <div id="result">
+                    <!-- Results goes here -->
                 </div>
             </div>
         </div>
+    </div>
 
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-    </body>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+
 </html>
-
-<!--
-<nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="http://lucene.apache.org/solr">
-                            <img id="solr-logo" alt="Brand" src="img/Solr_Logo_on_white.png">
-                        </a>
-                    </div>
-                    <div class="navbar-header navbar-right">
-                        made with <i class="small material-icons">heart-outline</i> by <a href="">adjamilton junior</a>
-                    </div>
-                </div>
-            </nav>
-
--->
