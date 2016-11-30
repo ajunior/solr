@@ -37,7 +37,7 @@
         </div>
     </header>
     <!-- caixa de texto de busca -->
-    <div class="container">
+    <section class="container">
         <div class="row card-panel grey lighten-3">
             <p id="texto" class="flow-text">Busca textual usando Apache Solr</p>
             <nav>
@@ -52,18 +52,21 @@
                 </div>
             </nav>
         </div>
-        <!-- resultado da busca -->
-        <div class="container">
-            <div class="row">
-                <div class="container">
-                    <p class="flow-text">8 documento(s) encontrado(s) com o(s) termo(s) especificado(s).</p>
-                </div>
-                <div id="result">
-                    <!-- Results goes here -->
-                </div>
+    </section>
+    <!-- resultado da busca -->
+    <section class="container">
+        <div class="row">
+            <div id="qt-docs-found">
+                <!-- Quantity of documents found goes here -->
+                <span class="badge" data-badge-caption="documento(s) encontrado(s) com o(s) termo(s) especificado(s).">8</span>
+            </div>
+            <div id="result">
+                <!-- Results goes here -->
+
             </div>
         </div>
     </div>
+    </section>
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

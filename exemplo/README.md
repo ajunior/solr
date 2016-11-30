@@ -1,6 +1,6 @@
 # Exemplo de busca usando o Apache Solr
 
-Após a devida configuração do Apache Solr e indexação dos seus documentos, você pode utilizar esse exemplo para testar sua base de busca.
+Após a devida configuração do Apache Solr e indexação dos seus documentos, você pode utilizar esse exemplo para testar sua base de pesquisa.
 
 ## Baixando o Exemplo
 
@@ -10,7 +10,7 @@ $ git clone https://github.com/ajunior/solr.git
 
 ## Executando buscas
 
-Entre na pasta ```exemplo``` e abra, em qualquer navegador, o arquivo ```index.html``` . Em seguida, digite o termo a ser procurado na caixa de texto e clique no botão 'Procurar'. O resultado da busca será mostrado abaixo, na mesma página.
+Entre na pasta ```exemplo``` e abra, em qualquer navegador, o arquivo ```index.html```. Em seguida, digite o termo a ser procurado na caixa de pesquisa e pressione Enter. O resultado da busca, incluindo a quantidade de documentos encontrados, será mostrado abaixo, na mesma página.
 
 ## Considerações
 
