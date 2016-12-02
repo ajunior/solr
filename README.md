@@ -10,7 +10,8 @@ Pela lista, já dá pra ter ideia do nível de qualidade dessa ferramenta, que �
 
 ### O que eu posso fazer com Solr
 
-Basicamente, indexar documentos e sites afim de facilitar a busca textual em seus conteúdos.
+Basicamente, Solr permite a indexação de documentos que podem ser encontrados mediante a correspondência com uma busca textual, ou como o [Guia de Referência](http://ftp.unicamp.br/pub/apache/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf) diz "O Solr foi criado para localizar documentos que correspondem a consultas." Entre os documentos que podem ser indexado, estão: **xml, json, csv, pdf, doc, docx, ppt, pptx, xls, xlsx, odt, odp, ods, ott, otp, ots, rtf, htm, html, txt
+e log**.
 
 ### Licença
 
@@ -18,7 +19,7 @@ O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICE
 
 ## Instalação
 
-O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) 1.8 ou superior. A instalação do Solr é bem simples, mas em algumas distribuições GNU/Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação no Windows e no macOS não serão demonstrados neste documento.
+O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) 1.8 ou superior. A instalação do Solr é bem simples, mas em algumas distribuições GNU/Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação para Windows e macOS não serão demonstrados neste documento.
 
 #### Verificando se o Java está instalado
 
@@ -70,6 +71,8 @@ Não há pacotes da versão 6 do Solr disponíveis nas distribuições, portanto
 $ sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -O /tmp/solr-6.3.0.tgz
 ```
 
+- Lista de [espelhos](http://www.apache.org/mirrors/) da Apache Foudation.
+
 O arquivo baixado estará salvo na pasta ```/tmp```.
 
 #### Descompactando
@@ -98,6 +101,13 @@ $ sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
 
 **OBS:** Se estiver instalando o Solr no **Fedora** ou no **CentOS**, certifique-se de ter o pacote [lsof](https://admin.fedoraproject.org/pkgdb/package/rpms/lsof/) instalado antes de executar o script de instalação. Para verificar se o ```lsof``` já está instalado use o comando ```lsof -v```. Caso precise instalar o pacote, use ```$ sudo yum install lsof``` para instalá-lo no CentOS ou ```$ sudo dnf install lsof``` para instalá-lo no Fedora.
 
+Após a instalação, pode-se excluir o arquivo baixado e a pasta dezcompactada.
+
+```bash
+$ rm /tmp/solr-6.3.0.tgz
+$ rm -rf /tmp/solr-6.3.0.tgz
+```
+
 ### Instalação Concluída
 
 Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip ou domínio>:8983/solr``` se for acessar remotamente o servidor que está hospedando o Solr.
@@ -106,10 +116,10 @@ Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessa
 
 | Comando | Descrição |
 | ------- | --------- |
-| ```service solr status``` | Verificar o status do serviço. |
-| ```service solr start``` | Iniciar o serviço. |
-| ```service solr stop``` | Parar o serviço. |
-| ```service solr restart``` | Reiniciar o serviço. |
+| service solr status | Verificar o status do serviço. |
+| service solr start | Iniciar o serviço. |
+| service solr stop | Parar o serviço. |
+| service solr restart | Reiniciar o serviço. |
 
 ## Criando Cores
 
@@ -134,7 +144,7 @@ $ bin/post -c <corename> <pasta>
 ### Indexando Site
 
 ```bash
-$ sudo su - solr -c "/opt/solr/bin/solr create -c gettingstarted -n data_driven_schema_configs"
+$ sudo su - solr -c "/opt/solr/bin/solr create -c <corename> -n data_driven_schema_configs"
 $ bin/post -c corename <url> -recursive 2 -delay 5
 ```
 
