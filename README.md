@@ -1,4 +1,4 @@
-# Apache Solr: Introdução, Instalação e Indexação
+# Apache Solr: Introdução, Instalação, Indexação e Consultas
 
 O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob o [Apache Lucene](http://lucene.apache.org/)(TM).
 
@@ -101,7 +101,7 @@ $ sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
 
 **OBS:** Se estiver instalando o Solr no **Fedora** ou no **CentOS**, certifique-se de ter o pacote [lsof](https://admin.fedoraproject.org/pkgdb/package/rpms/lsof/) instalado antes de executar o script de instalação. Para verificar se o ```lsof``` já está instalado use o comando ```lsof -v```. Caso precise instalar o pacote, use ```$ sudo yum install lsof``` para instalá-lo no CentOS ou ```$ sudo dnf install lsof``` para instalá-lo no Fedora.
 
-Após a instalação, pode-se excluir o arquivo baixado e a pasta dezcompactada.
+No caso deste tipo de instalação, após a conclusão pode-se excluir o arquivo baixado e a pasta criada pelo processo de descompactação.
 
 ```bash
 $ rm /tmp/solr-6.3.0.tgz
