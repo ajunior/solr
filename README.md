@@ -1,4 +1,4 @@
-# Apache Solr: Introdução e Instalação
+# Apache Solr: Introdução, Instalação e Indexação
 
 O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob o [Apache Lucene](http://lucene.apache.org/)(TM).
 
@@ -18,87 +18,136 @@ O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICE
 
 ## Instalação
 
-O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) 1.8 ou superior. A instalação do Solr é bem simples, mas em algumas distribuições Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação no Windows e no macOS não serão demonstrados neste documento.
+O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) 1.8 ou superior. A instalação do Solr é bem simples, mas em algumas distribuições GNU/Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação no Windows e no macOS não serão demonstrados neste documento.
+
+#### Verificando se o Java está instalado
+
+```bash
+$ java -version
+```
+
+Se a versão instalada do Java for igual ou superior a versão mínima exigida, avance para a seção [Instalando o Solr](#instalando-o-solr), caso contrário, siga os passos abaixo para instalação do Java, de acordo com a sua distribuição GNU/Linux.
 
 ### Instalando o Java 1.8 no CentOS 7 (1511)
-
-#### Atualizando a distribuição
 
 ```bash
 $ sudo yum check-update
 $ sudo yum update
-```
-
-_Se quiser suprimir as perguntas de confirmação do gerenciador de pacotes use a opção ```-y```. Exemplo: ```sudo yum -y update```._
-
-#### Instalando o JRE
-
-```bash
 $ sudo yum install java-1.8.0-openjdk.x86_64
 ```
 
-_Se quiser suprimir as perguntas de confirmação do gerenciador de pacotes use a opção ```-y```. Exemplo: ```sudo yum -y install java-1.8.0-openjdk.x86_64```._
-
 ### Instalando o Java 1.8 no Debian 8 (Jessie)
-
-#### Atualizando a distribuição
 
 ```bash
 $ su -c "apt-get update && apt-get upgrade"
-```
-
-_Se quiser suprimir as perguntas de confirmação do gerenciador de pacotes use a opção ```-y```. Exemplo: ```sudo apt-get -y upgrade```._
-
-#### Adicionando o repositório Backports
-
-```bash
 $ su -c "echo \"deb http://ftp.br.debian.org/debian jessie-backports main\" >> /etc/apt/sources.list"
 $ su -c "apt-get update"
-```
-
-#### Instalando o JRE
-
-```bash
 $ su -c "apt-get install openjdk-8-jre"
 ```
 
 ### Instalando o Java 1.8 no Fedora 24 (Server)
 
-#### Atualizando a distribuição
-
 ```bash
 $ sudo dnf update
 $ sudo dnf upgrade
-```
-
-#### Instalando o JRE
-
-```bash
 $ sudo dnf install java-1.8.0-openjdk.x86_64
 ```
 
 ### Instalando o Java 1.8 no Ubuntu 16.10/16.04.1 LTS (Yakkety Yak/Xenial Xerus)
 
-#### Atualizando a distribuição
-
 ```bash
 $ sudo apt-get update && apt-get upgrade
-```
-
-#### Instalando o JRE
-
-```bash
 $ sudo apt-get install default-jre
 ```
 
-_Se quiser suprimir as perguntas de confirmação do gerenciador de pacotes use a opção ```-y```. Exemplo: ```sudo apt-get -y install default-jre```._
+### Instalando o Solr
 
-### Verificando a versão do Java
+Não há pacotes da versão 6 do Solr disponíveis nas distribuições, portanto, teremos que baixar e instalar manualmente. Mas não se preocupe, os desenvolvedores do Solr fizeram um excelente trabalho de forma que é extremamente simples proceder com a instalação.
 
-Concluída a instalação, verifique se a versão instalada é igual ou superior a versão mínima exigida. Nesse caso, a versão ```1.8``` do JRE.
+#### Baixando o Solr
 
 ```bash
-$ java -version
+$ sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -O /tmp/solr-6.3.0.tgz
+```
+
+O arquivo baixado estará salvo na pasta ```/tmp```.
+
+#### Descompactando
+
+<small>Se você deseja instalar o Solr em um ambiente de produção, veja a seção [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao).</small>
+
+```bash
+$ tar xzf /tmp/solr-6.3.0.tgz
+```
+
+#### Executando o Solr
+
+```bash
+$ /tmp/solr-6.3.0/solr start
+```
+
+### Instalando o Solr em ambiente de produção
+
+Para facilitar a vida dos Administradores de Sistemas, o Solr vem com um script que procede a instalação dele como um serviço.
+Após baixar o Solr, descompacte o script instalador e o execute.
+
+```bash
+$ tar xzf /tmp/solr-6.3.0.tgz solr-6.3.0/bin/install_solr_service.sh --strip-components=2
+$ sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
+```
+
+**OBS:** Se estiver instalando o Solr no **Fedora** ou no **CentOS**, certifique-se de ter o pacote [lsof](https://admin.fedoraproject.org/pkgdb/package/rpms/lsof/) instalado antes de executar o script de instalação. Para verificar se o ```lsof``` já está instalado use o comando ```lsof -v```. Caso precise instalar o pacote, use ```$ sudo yum install lsof``` para instalá-lo no CentOS ou ```$ sudo dnf install lsof``` para instalá-lo no Fedora.
+
+### Instalação Concluída
+
+Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip ou domínio>:8983/solr``` se for acessar remotamente o servidor que está hospedando o Solr.
+
+#### Manipular o serviço Solr
+
+| Comando | Descrição |
+| ------- | --------- |
+| ```service solr status``` | Verificar o status do serviço. |
+| ```service solr start``` | Iniciar o serviço. |
+| ```service solr stop``` | Parar o serviço. |
+| ```service solr restart``` | Reiniciar o serviço. |
+
+## Criando Cores
+
+## Indexando documentos
+
+A indexação de conteúdos é feito pelo programa ```post```, que fica localizado na pasta ```bin```, dentro do diterório do Solr.
+
+### PDF, DOC
+
+Indexando um PDF específico:
+
+```bash
+$ bin/post -c <corename> <documento>
+```
+
+Você também pode indexar todos os PDFs contidos numa pasta:
+
+```bash
+$ bin/post -c <corename> <pasta>
+```
+
+### Indexando Site
+
+```bash
+$ sudo su - solr -c "/opt/solr/bin/solr create -c gettingstarted -n data_driven_schema_configs"
+$ bin/post -c corename <url> -recursive 2 -delay 5
+```
+
+## Configurações específicas do TCE-PB
+
+## Troubleshotting
+
+### Firewall
+
+O Fedora vem com o [FirewallD](https://fedoraproject.org/wiki/FirewallD) ativado por padrão, então, caso você não consiga acesso externo ao painel de administração, verifique se o firewall está ativado. Se for o caso, você pode desativá-lo ou adicionar excessão(ões) as regras do firewall.
+
+```bash
+sudo systemctl stop firewalld
 ```
 
 ### Proxy
@@ -115,112 +164,3 @@ $ export http_proxy=<ip>:<porta>
 $ export https_proxy=<ip>:<porta>
 $ export ftp_proxy=<ip>:<porta>
 ```
-
-### Instalando o Solr
-
-Após a instalação da dependência, segue o procedimento para instalação da versão 6.3 do Apache Solr.
-
-Não há pacotes da versão 6 do Solr disponíveis nas distribuições, portanto, teremos que baixar e instalar manualmente. Mas não se preocupe, os desenvolvedores do Solr fizeram um excelente trabalho de forma que é extremamente simples proceder com a instalação.
-
-#### Baixando o Solr
-
-```bash
-$ sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -O /tmp/solr-6.3.0.tgz
-```
-
-O arquivo baixado estará salvo na pasta ```/tmp```.
-
-#### Descompactando
-
-<small>Se você deseja instalar o Solr em um ambiente de produção, veja a seção [Instalando o Solr como serviço](#instalando-o-solr-como-serviço).</small>
-
-```bash
-$
-```
-
-#### Iniciando o Solr
-
-
-### Instalando o Solr em ambiente de produção
-
-Para facilitar a vida dos Administradores de Sistemas, o Solr vem com um script que procede a instalação de formar que o Solr funcionará como um serviço.
-
-Após
-
-```bash
-$ tar xzf /tmp/solr-6.3.0.tgz solr-6.3.0/bin/install_solr_service.sh --strip-components=2
-```
-
-Se estiver instalando o Solr no Fedora ou no CentOS, certifique-se de ter o pacote [lsof](https://admin.fedoraproject.org/pkgdb/package/rpms/lsof/) instalado antes de executar o script de instalação. Para verificar se o ```lsof``` já está instalado use o comando ```lsof -v```. Caso precise instalar esse pacote, siga as instruções abaixo:
-
-#### Instalando lsof no CentOS
-
-```bash
-$ sudo yum install lsof
-```
-
-#### Instalando lsof no Fedora
-
-```bash
-$ sudo dnf install lsof
-```
-
-Em seguida, proceda com a execução do script de instalação do Solr.
-
-```bash
-$ sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
-```
-
-### Instalação Concluída
-
-Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip ou domínio>:8983/solr``` se for acessar remotamente o servidor que está hospedando o Solr.
-
-### Troubleshotting
-
-#### Firewall
-
-O Fedora vem com o [FirewallD](https://fedoraproject.org/wiki/FirewallD) ativado por padrão, então, caso você não consiga acesso externo ao painel de administração, verifique se o firewall está ativado. Se for o caso, você pode desativar ou adicionar excessão(ões) as regras do firewall.
-
-```bash
-sudo systemctl stop firewalld
-```
-
-
-
-### Como manipular o serviço
-
-| Comando | Descrição |
-| ------- | --------- |
-| ```service solr status``` | Verificar o status do serviço. |
-| ```service solr start``` | Iniciar o serviço. |
-| ```service solr stop``` | Parar o serviço. |
-| ```service solr restart``` | Reiniciar o serviço. |
-
-## Indexando documentos
-
-A indexação de conteúdos é feito pelo programa ```post```, que fica localizado na pasta ```bin```, dentro do diterório do Solr.
-
-### PDFs
-
-Indexando um PDF específico:
-
-```bash
-$ bin/post -c documento.pdf
-```
-
-Você também pode indexar todos os PDFs contidos numa pasta:
-
-```bash
-$ bin/post -c pasta/
-```
-
-### Indexando Sites
-
-```bash
-$ sudo su - solr -c "/opt/solr/bin/solr create -c gettingstarted -n data_driven_schema_configs"
-$ bin/post -c corename https://siteurl.com -recursive 2 -delay 1
-```
-
-## Configurações específicas do TCE-PB
-
-
