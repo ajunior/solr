@@ -77,7 +77,7 @@ O arquivo baixado estará salvo na pasta ```/tmp```.
 
 #### Descompactando
 
-<small>Se você deseja instalar o Solr em um ambiente de produção, veja a seção [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao).</small>
+<blockquote>Se você deseja instalar o Solr em um ambiente de produção, veja a seção [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao).</blockquote>
 
 ```bash
 $ tar xzf /tmp/solr-6.3.0.tgz
@@ -88,6 +88,8 @@ $ tar xzf /tmp/solr-6.3.0.tgz
 ```bash
 $ /tmp/solr-6.3.0/solr start
 ```
+
+Para testar se o Solr está funcionando, acesse o endereço ```http://localhost:8983/solr/admin/ping```.
 
 ### Instalando o Solr em ambiente de produção
 
