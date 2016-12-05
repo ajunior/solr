@@ -31,8 +31,8 @@ Lista de Conteúdo
         * [Descompactando](#descompactando)
     * [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao)
         * [Instalação concluída](#instalacao-concluida)
-        * [Manipulando o serviço Solr](#manipulando-o-servico-solr)
-    * [Instalando o Solr via Vagrant](#instaando-o-solr-via-vagrant)
+        * [Manipulando o serviço Solr](#manipulando-o-servico)
+    * [Instalando o Solr via Vagrant](#instalando-o-solr-via-vagrant)
 * [Entendendo os Cores](#entendendo-os-cores)
 * [Sobre esta Documentação](#sobre-esta-documentacao)
     * [Como contribuir](#como-contribuir)
@@ -144,9 +144,10 @@ $ rm -rf /tmp/solr-6.3.0.tgz
 
 Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip ou domínio>:8983/solr``` se for acessar remotamente o servidor que está hospedando o Solr.
 
-### Manipulando o serviço Solr
+### Manipulando o serviço
 
 Uma vez que foi instalado como um serviço, você pode manipular a execução do Solr, pelo terminal, como qualquer outro serviço, podendo iniciar, parar, reinicar e verificar seu status, conforme os comandos abaixo relacionados:
+
 | Comando | Descrição |
 | ------- | --------- |
 | service solr start | Iniciar o serviço. |
