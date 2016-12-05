@@ -125,7 +125,7 @@ Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessa
 
 ## Solr via Vagrant
 
-Para abstrair o processo de instalação e partir direto para prática, você pode criar uma Máquina Virtual com o [Vagrant](http://vagrant.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/vagrant/Vagrantfile), que resultará numa instalação automatizada de um sistema GNU/Linux (Ubunto 16.04) com a versão mais recente do Solr devidamente instalada e pronta pra uso.
+Para abstrair o processo de instalação e partir direto para prática, você pode criar uma Máquina Virtual com o [Vagrant](http://vagrant.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/blob/master/vagrant/Vagrantfile), que resultará numa instalação automatizada de um sistema GNU/Linux (Ubuntu 16.04 - Xenial Xerus) com a versão mais recente do Solr devidamente instalada e pronta pra uso.
 
 Para acessar a interface web de administração do Solr, acesse [http://localhost:8983/solr](http://localhost:8983/solr), de qualquer navegador.
 
