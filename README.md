@@ -4,19 +4,17 @@ O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www
 
 Basicamente, o Solr permite a indexação de documentos que podem ser encontrados mediante a correspondência com uma busca textual, ou como o [Guia de Referência](https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf) diz "O Solr foi criado para localizar documentos que correspondem a consultas." Entre os documentos que podem ser indexado, estão: **xml, json, csv, pdf, doc, docx, ppt, pptx, xls, xlsx, odt, odp, ods, ott, otp, ots, rtf, htm, html, txt e log**.
 
-Solr é responsável por potencializar o mecanismo de buscas de muitos dos maiores sites da Internet.
-
 ### Quem está usando Solr
 
-Milhares de empresas usam o Solr para indexar conteúdo, provendo uma poderosa ferramenta de busca ao seus usuários. Entre essas empresas estão gigantes como a **Apple, Netflix, Disney, AT&T, CNET, Cisco, AOL, NASA, MTV, Goldman Sachs, Cloudspace, Sears, GameSpot, eHarmony, TicketMaster, The Guardian, eBay, StubHub, IBM, Adobe, Best Buy, DuckDuckGo e o Instagram**. Pelas empresas citadas, já dá pra ter ideia do nível de qualidade dessa ferramenta. Veja a [lista completa]().
+Diversas empresas usam o Solr para indexar conteúdo, provendo uma poderosa ferramenta de busca ao seus usuários. Entre essas empresas estão gigantes como a **Apple, Netflix, Disney, AT&T, CNET, Cisco, AOL, NASA, MTV, Goldman Sachs, Cloudspace, Sears, GameSpot, eHarmony, TicketMaster, The Guardian, eBay, StubHub, IBM, Adobe, Best Buy, DuckDuckGo e o Instagram**. Pelas empresas citadas, já dá pra ter ideia do nível de qualidade dessa ferramenta. Veja a [lista completa](https://wiki.apache.org/solr/PublicServers). Solr é responsável por potencializar o mecanismo de buscas de muitos dos maiores sites da Internet.
 
 ### Principais caracteristicas
 
-Solr é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está em sua versão [6.3.0](http://www-us.apache.org/dist/lucene/solr/6.3.0), que foi lançada em 8 de novembro de 2016, conforme a _[nota de lançamento](http://lucene.apache.org/solr/news.html)_. As principais características incluem uma poderosa busca textual, hit highlighting, faceted search and analytics, rich document parsing, busca geoespacial, extensive REST APIs as well as parallel SQL. Solr is enterprise grade, seguro e altamente escalável, providing fault tolerant distributed search and indexing, and powers the search and navigation features of many of the world's largest internet sites.
+Solr é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está em sua versão [6.3.0](http://www-us.apache.org/dist/lucene/solr/6.3.0), que foi lançada em 8 de novembro de 2016, conforme a _[nota de lançamento](http://lucene.apache.org/solr/news.html)_. As principais características incluem uma poderosa busca textual, hit highlighting, faceted search and analytics, rich document parsing, busca geoespacial, extensive REST APIs as well as parallel SQL. Solr is enterprise grade, seguro e altamente escalável, providing fault tolerant distributed search and indexing.
 
 ### Alternativas
 
-Existem algumas alternativas ao Solr, mas a principal é o [ElasticSearch](https://www.elastic.co/), que também é desenvolvido sob a biblioteca Lucene.
+Existem algumas alternativas ao Solr, mas a principal é o [Elasticsearch](https://www.elastic.co/), que também é desenvolvido sob a biblioteca Lucene.
 
 ### Licença
 
@@ -40,6 +38,7 @@ Lista de Conteúdo
         * [Manipulando o serviço](#manipulando-o-servico)
     * [Instalando o Solr via Vagrant](#instalando-o-solr-via-vagrant)
 * [Terminologia](#terminologia)
+    * [Indexing (Indexação)](#indexing-indexacao)
     * [Query](#query)
 * [Criando, alterando e deletando Cores](#criando-alterando-e-deletando-cores)
 * [Sobre esta Documentação](#sobre-esta-documentacao)
@@ -179,17 +178,19 @@ Para acessar a interface web de administração do Solr, acesse [http://localhos
 
 O Solr traz consigo alguns termos desconhecidos para quem não está habituado com sistemas indexadores e buscadores de informações. Por isso, é necessário entender esses termos antes de prosseguir com as configurações, indexação de documentos e realização de consultas.
 
-### Indexar
+### Indexing (Indexação)
 
 É um dos processos mais básicos e importantes do Solr. Indexar é o processo de adicionar conteúdo ao Solr, tornando-o pesquisável.
 
-### Query
+### Query (Consulta)
 
 ### Hit highlighting
 
 ### Facet
 
 ### Relevance (Relevância)
+
+Determina o nível de satisfação do resultado de uma consulta, para o usuário.
 
 ## Criando, alterando e deletando Cores
 
@@ -203,13 +204,13 @@ A indexação de documentos de formato rico, tais como PDF, RTF, DOC etc, o Solr
 Indexando um PDF específico:
 
 ```bash
-$ bin/post -c <corename> <documento>
+$ bin/post -c <nome_do_core> <documento>
 ```
 
 Você também pode indexar todos os documentos contidos numa pasta:
 
 ```bash
-$ bin/post -c <corename> <pasta>
+$ bin/post -c <nome_do_core> <pasta>
 ```
 
 ### Indexando Site
@@ -217,8 +218,8 @@ $ bin/post -c <corename> <pasta>
 Uma das habilidades do Solr é indexar sites.
 
 ```bash
-$ sudo su - solr -c "/opt/solr/bin/solr create -c <corename> -n data_driven_schema_configs"
-$ bin/post -c corename <url> -recursive 2 -delay 5
+$ sudo su - solr -c "/opt/solr/bin/solr create -c <nome_do_core> -n data_driven_schema_configs"
+$ bin/post -c <nome_do_core> <url> -recursive 2 -delay 5
 ```
 
 ## Consultas
@@ -262,8 +263,9 @@ Ao me deparar, na instituição pública na qual estou estagiando, com a tarefa 
 
 ## Referências Bibliográficas
 
-- [Solr Reference Guide 6.3](https://archive.apache.org/dist/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf)
-- HowToForge
+* [Solr Reference Guide 6.3](https://archive.apache.org/dist/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf)
+* HowToForge
+* [Solr and web site indexing to create a site search](http://stackoverflow.com/questions/2481031/solr-and-web-site-indexing-to-create-a-site-search)
 
 ## Notas de Copyright
 
