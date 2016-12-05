@@ -17,11 +17,33 @@ Solr é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está e
 
 O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), que resumidamente permite o __livre uso, redistribuição e alteração, sem exigência de reciprocidade__.
 
-## 1. Instalação
+Lista de Conteúdo
+======
+
+* [Instalação](#instalacao)
+    * [Verificando se o Java está instalado](#verificando-se-o-java-esta-instalado)
+    * [Instalando o Java no CentOS](#instalando-o-java-no-centos)
+    * [Instalando o Java no Debian](#instalando-o-java-no-debian)
+    * [Instalando o Java no Fedora](#instalando-o-java-no-fedora)
+    * [Instalando o Java no Ubuntu](#instalando-o-java-no-ubuntu)
+    * [Instalando o Solr](#instalando-o-solr)
+        * [Bainxando o Solr](#baixando-o-solr)
+        * [Descompactando](#descompactando)
+    * [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao)
+        * [Instalação concluída](#instalacao-concluida)
+        * [Manipulando o serviço Solr](#manipulando-o-servico-solr)
+    * [Instalando o Solr via Vagrant](#instaando-o-solr-via-vagrant)
+* [Entendendo os Cores](#entendendo-os-cores)
+* [Sobre esta Documentação](#sobre-esta-documentacao)
+    * [Como contribuir](#como-contribuir)
+    * [Notas de Copyright](#notas-de-copyright)
+
+
+# Instalação
 
 O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) 1.8 ou superior. A instalação do Solr é bem simples, mas em algumas distribuições GNU/Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação para Windows e macOS não serão demonstrados neste documento.
 
-#### 1.2 Verificando se o Java está instalado
+## Verificando se o Java está instalado
 
 ```bash
 $ java -version
@@ -29,7 +51,9 @@ $ java -version
 
 Se a versão instalada do Java for igual ou superior a versão mínima exigida, avance para a seção [Instalando o Solr](#instalando-o-solr), caso contrário, siga os passos abaixo para instalação do Java, de acordo com a sua distribuição GNU/Linux.
 
-### 1.3 Instalando o Java 1.8 no CentOS 7 (1511)
+## Instalando o Java no CentOS
+
+**Versão: 7 (1511)**
 
 ```bash
 $ sudo yum check-update
@@ -37,7 +61,9 @@ $ sudo yum update
 $ sudo yum install java-1.8.0-openjdk.x86_64
 ```
 
-### 1.4 Instalando o Java 1.8 no Debian 8 (Jessie)
+### Instalando o Java no Debian
+
+**Versão: 8.6 (Jessie)**
 
 ```bash
 $ su -c "apt-get update && apt-get upgrade"
@@ -46,7 +72,9 @@ $ su -c "apt-get update"
 $ su -c "apt-get install openjdk-8-jre"
 ```
 
-### Instalando o Java 1.8 no Fedora 24 (Server)
+### Instalando o Java no Fedora
+
+**Versão: 24 (Server)**
 
 ```bash
 $ sudo dnf update
@@ -54,18 +82,20 @@ $ sudo dnf upgrade
 $ sudo dnf install java-1.8.0-openjdk.x86_64
 ```
 
-### Instalando o Java 1.8 no Ubuntu 16.10/16.04.1 LTS (Yakkety Yak/Xenial Xerus)
+### Instalando o Java no Ubuntu
+
+**Versão: 16.10 (Yakkety Yak) e 16.04.1 LTS (Xenial Xerus)**
 
 ```bash
 $ sudo apt-get update && apt-get upgrade
 $ sudo apt-get install default-jre
 ```
 
-### Instalando o Solr
+## Instalando o Solr
 
 Não há pacotes da versão 6 do Solr disponíveis nas distribuições, portanto, teremos que baixar e instalar manualmente. Mas não se preocupe, os desenvolvedores do Solr fizeram um excelente trabalho de forma que é extremamente simples proceder com a instalação.
 
-#### Baixando o Solr
+### Baixando o Solr
 
 ```bash
 $ sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -O /tmp/solr-6.3.0.tgz
@@ -75,7 +105,7 @@ Lista completa de [espelhos](http://www.apache.org/mirrors/) da Apache Foudation
 
 O arquivo baixado estará salvo na pasta ```/tmp```.
 
-#### Descompactando
+### Descompactando
 
 **OBS:** Se você deseja instalar o Solr em um ambiente de produção, veja a seção [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao).
 
@@ -83,7 +113,7 @@ O arquivo baixado estará salvo na pasta ```/tmp```.
 $ tar xzf /tmp/solr-6.3.0.tgz
 ```
 
-#### Executando o Solr
+### Executando o Solr
 
 ```bash
 $ /tmp/solr-6.3.0/solr start
@@ -91,7 +121,7 @@ $ /tmp/solr-6.3.0/solr start
 
 Para testar se o Solr está funcionando, acesse o endereço ```http://localhost:8983/solr/admin/ping```.
 
-### Instalando o Solr em ambiente de produção
+## Instalando o Solr em ambiente de produção
 
 Para facilitar a vida dos Administradores de Sistemas, o Solr vem com um script que procede a instalação dele como um serviço.
 Após baixar o Solr, descompacte o script instalador e o execute.
@@ -114,22 +144,23 @@ $ rm -rf /tmp/solr-6.3.0.tgz
 
 Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip ou domínio>:8983/solr``` se for acessar remotamente o servidor que está hospedando o Solr.
 
-#### Manipular o serviço Solr
+### Manipulando o serviço Solr
 
+Uma vez que foi instalado como um serviço, você pode manipular a execução do Solr, pelo terminal, como qualquer outro serviço, podendo iniciar, parar, reinicar e verificar seu status, conforme os comandos abaixo relacionados:
 | Comando | Descrição |
 | ------- | --------- |
-| service solr status | Verificar o status do serviço. |
 | service solr start | Iniciar o serviço. |
 | service solr stop | Parar o serviço. |
 | service solr restart | Reiniciar o serviço. |
+| service solr status | Verificar o status do serviço. |
 
-## Solr via Vagrant
+## Instalando o Solr via Vagrant
 
 Para abstrair o processo de instalação e partir direto para prática, você pode criar uma Máquina Virtual com o [Vagrant](http://vagrant.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/blob/master/vagrant/Vagrantfile), que resultará numa instalação automatizada de um sistema GNU/Linux (Ubuntu 16.04 - Xenial Xerus) com a versão mais recente do Solr devidamente instalada e pronta pra uso.
 
 Para acessar a interface web de administração do Solr, acesse [http://localhost:8983/solr](http://localhost:8983/solr), de qualquer navegador.
 
-## Criando Cores
+## Entendendo os Cores
 
 ## Indexando documentos
 
@@ -163,9 +194,9 @@ $ bin/post -c corename <url> -recursive 2 -delay 5
 
 ## Configurações específicas do TCE-PB
 
-## Troubleshotting
+# Troubleshotting
 
-### Firewall
+## Firewall
 
 O Fedora vem com o [FirewallD](https://fedoraproject.org/wiki/FirewallD) ativado por padrão, então, caso você não consiga acesso externo ao painel de administração, verifique se o firewall está ativado. Se for o caso, você pode desativá-lo ou adicionar excessão(ões) as regras do firewall.
 
@@ -188,24 +219,24 @@ $ export https_proxy=<ip>:<porta>
 $ export ftp_proxy=<ip>:<porta>
 ```
 
-## Sobre esta documentação
+# Sobre esta documentação
 
 **É importante ressaltar que esta não é uma documentação oficial sobre o Apache Solr e nem intenciona ser.** 
 
 Ao me deparar, na instituição pública na qual estou estagiando, com a tarefa de implemntar o Apache Solr para melhorar as bucas no site e documentos gerados pela instituição, como Diário Oficial Eletrônico e Atos Normativos, comecei a pesquisar pelo termo, que até então desconhecia. Tudo que eu achava pertinente, seja teórico ou prático, durante meu aprendizado, fui anotado para não me perder em meio a tantos fontes de informações. Então, diante da realidade que há pouquissíma documentação em Português e da elevada quantidade de material que eu tinha escrito, resolvi reescrever esse conteúdo de forma organizada e disponibilizá-lo no meu GitHub, de forma que talvez venha ajudar outras pessoas.
 
-### Como contribuir
+## Como contribuir
 
 Como citado acima, essa documentação é baseada nas leituras do guia de referência, documentações correlatas e experiência prática, então, se você aprendeu algo novo ou uma forma melhor ou mais fácil de fazer alguma tarefa descrita aqui, *fork* este repositório, faça as devidas alterações e mande um *Pull Request*, que eu vou analisar e aceitá-lo se estiver dentro dos padrões. Correções ortográficas ou outras correções menores devem ser enviadas via [issue track]().
 
 Dúvidas e sugestões também são bem-vindas e podem ser enviadas via *[issue tracker]()*.
 
-### Referências Bibliográficas
+## Referências Bibliográficas
 
 - Solr Reference Guide
 - HowToForge
 
-### Notas de Copyright
+## Notas de Copyright
 
 - Esse material é regido sob a licença LGPL v2.
 - Lucene é marca registrada da Apache Foundation.
