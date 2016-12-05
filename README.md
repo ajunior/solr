@@ -34,7 +34,9 @@ Lista de Conteúdo
         * [Instalação concluída](#instalacao-concluida)
         * [Manipulando o serviço](#manipulando-o-servico)
     * [Instalando o Solr via Vagrant](#instalando-o-solr-via-vagrant)
-* [Entendendo os Cores](#entendendo-os-cores)
+* [Glossário](#glossario)
+    * [Query](#query)
+* [Criando, alterando e deletando Cores](#criando-alterando-e-deletando-cores)
 * [Sobre esta Documentação](#sobre-esta-documentacao)
     * [Como contribuir](#como-contribuir)
     * [Notas de Copyright](#notas-de-copyright)
@@ -162,7 +164,17 @@ Para abstrair o processo de instalação e partir direto para prática, você po
 
 Para acessar a interface web de administração do Solr, acesse [http://localhost:8983/solr](http://localhost:8983/solr), de qualquer navegador.
 
-## Entendendo os Cores
+## Glossário
+
+O Solr traz consigo alguns termos desconhecidos para quem não está habituado com sistemas indexadores e buscadores de informações. Por isso, é necessário entender esses termos antes de prosseguir com as configurações, idexação de documentos e realização de consultas.
+
+### Query
+
+### Hit highlighting
+
+### Facet
+
+## Criando, alterando e deletando Cores
 
 ## Indexando documentos
 
@@ -191,8 +203,6 @@ $ bin/post -c corename <url> -recursive 2 -delay 5
 ```
 
 ## Consultas
-
-
 
 ## Configurações específicas do TCE-PB
 
@@ -238,6 +248,6 @@ Ao me deparar, na instituição pública na qual estou estagiando, com a tarefa 
 
 ## Notas de Copyright
 
-- Esse material é regido sob a licença LGPL v2.
-- Lucene é marca registrada da Apache Foundation.
-- Java é marca registrada da Oracle Inc.
+    Copyright (c) 2016-2017, Adjamilton Junior. Essa documentação é regida sobe a licença GPLv3.
+    
+    Lucene é marca registrada da Apache Foundation. Java é marca registrada da Oracle Inc.
