@@ -1,9 +1,10 @@
 # Apache Solr: Introdução, Instalação, Indexação e Consultas
 
-O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob o [Apache Lucene](http://lucene.apache.org/)(TM).
+O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob a biblioteca [Apache Lucene](http://lucene.apache.org/)(TM).
 
-Basicamente, o Solr permite a indexação de documentos que podem ser encontrados mediante a correspondência com uma busca textual, ou como o [Guia de Referência](https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf) diz "O Solr foi criado para localizar documentos que correspondem a consultas." Entre os documentos que podem ser indexado, estão: **xml, json, csv, pdf, doc, docx, ppt, pptx, xls, xlsx, odt, odp, ods, ott, otp, ots, rtf, htm, html, txt
-e log**.
+Basicamente, o Solr permite a indexação de documentos que podem ser encontrados mediante a correspondência com uma busca textual, ou como o [Guia de Referência](https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf) diz "O Solr foi criado para localizar documentos que correspondem a consultas." Entre os documentos que podem ser indexado, estão: **xml, json, csv, pdf, doc, docx, ppt, pptx, xls, xlsx, odt, odp, ods, ott, otp, ots, rtf, htm, html, txt e log**.
+
+Solr é responsável por potencializar o mecanismo de buscas de muitos dos maiores sites da Internet.
 
 ### Quem está usando Solr
 
@@ -11,11 +12,15 @@ Milhares de empresas usam o Solr para indexar conteúdo, provendo uma poderosa f
 
 ### Principais caracteristicas
 
-Solr é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está em sua versão [6.3.0](http://www-us.apache.org/dist/lucene/solr/6.3.0), que foi lançada em 8 de novembro de 2016, conforme a _[nota de lançamento](http://lucene.apache.org/solr/news.html)_. As principais características incluem uma poderosa busca textual, powerful full-text search, hit highlighting, faceted search and analytics, rich document parsing, geospatial search, extensive REST APIs as well as parallel SQL. Solr is enterprise grade, secure and highly scalable, providing fault tolerant distributed search and indexing, and powers the search and navigation features of many of the world's largest internet sites.
+Solr é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está em sua versão [6.3.0](http://www-us.apache.org/dist/lucene/solr/6.3.0), que foi lançada em 8 de novembro de 2016, conforme a _[nota de lançamento](http://lucene.apache.org/solr/news.html)_. As principais características incluem uma poderosa busca textual, hit highlighting, faceted search and analytics, rich document parsing, busca geoespacial, extensive REST APIs as well as parallel SQL. Solr is enterprise grade, seguro e altamente escalável, providing fault tolerant distributed search and indexing, and powers the search and navigation features of many of the world's largest internet sites.
+
+### Alternativas
+
+Existem algumas alternativas ao Solr, mas a principal é o [ElasticSearch](https://www.elastic.co/), que também é desenvolvido sob a biblioteca Lucene.
 
 ### Licença
 
-O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), que resumidamente permite o __livre uso, redistribuição e alteração, sem exigência de reciprocidade__.
+O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), que resumidamente permite o **livre uso, redistribuição e alteração, sem exigência de reciprocidade**.
 
 Lista de Conteúdo
 ======
@@ -27,24 +32,24 @@ Lista de Conteúdo
     * [Instalando o Java no Fedora](#instalando-o-java-no-fedora)
     * [Instalando o Java no Ubuntu](#instalando-o-java-no-ubuntu)
     * [Instalando o Solr](#instalando-o-solr)
-        * [Bainxando](#baixando-o-solr)
+        * [Baixando](#baixando-o-solr)
         * [Descompactando](#descompactando)
         * [Executando](#executando)
     * [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao)
         * [Instalação concluída](#instalacao-concluida)
         * [Manipulando o serviço](#manipulando-o-servico)
     * [Instalando o Solr via Vagrant](#instalando-o-solr-via-vagrant)
-* [Glossário](#glossario)
+* [Terminologia](#terminologia)
     * [Query](#query)
 * [Criando, alterando e deletando Cores](#criando-alterando-e-deletando-cores)
 * [Sobre esta Documentação](#sobre-esta-documentacao)
     * [Como contribuir](#como-contribuir)
+    * [Referências Bibliográficas](#referencias-bibliograficas)
     * [Notas de Copyright](#notas-de-copyright)
-
 
 # Instalação
 
-O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) 1.8 ou superior. A instalação do Solr é bem simples, mas em algumas distribuições GNU/Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação para Windows e macOS não serão demonstrados neste documento.
+O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) **1.8 ou superior**. A instalação do Solr é bem simples, mas em algumas distribuições GNU/Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação para Windows e macOS não serão demonstrados neste documento.
 
 ## Verificando se o Java está instalado
 
@@ -104,7 +109,7 @@ Não há pacotes da versão 6 do Solr disponíveis nas distribuições, portanto
 $ sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -O /tmp/solr-6.3.0.tgz
 ```
 
-Lista completa de [espelhos](http://www.apache.org/mirrors/) da Apache Foudation.
+Lista completa de [espelhos](http://www.apache.org/mirrors/) da Apache Software Foudation.
 
 O arquivo baixado estará salvo na pasta ```/tmp```.
 
@@ -120,6 +125,12 @@ $ tar xzf /tmp/solr-6.3.0.tgz
 
 ```bash
 $ /tmp/solr-6.3.0/solr start
+```
+
+Por padrão, o Solr utiliza a porta 8983, no entanto, pode-se especificar uma outra porta usando o parametro ```-p``` na inicialização.
+
+```bash
+$ /tmp/solr-6.3.0/solr start -p <nova porta>
 ```
 
 Para testar se o Solr está funcionando, acesse o endereço ```http://localhost:8983/solr/admin/ping```.
@@ -160,19 +171,25 @@ Uma vez que foi instalado como um serviço, você pode manipular a execução do
 
 ## Instalando o Solr via Vagrant
 
-Para abstrair o processo de instalação e partir direto para prática, você pode criar uma Máquina Virtual com o [Vagrant](http://vagrant.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/blob/master/vagrant/Vagrantfile), que resultará numa instalação automatizada de um sistema GNU/Linux (Ubuntu 16.04 - Xenial Xerus) com a versão mais recente do Solr devidamente instalada e pronta pra uso.
+Para abstrair o processo de instalação e partir direto para prática, você pode criar uma Máquina Virtual com o [Vagrant](http://vagrantup.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/blob/master/vagrant/Vagrantfile), que resultará numa instalação automatizada de um sistema GNU/Linux (Ubuntu 16.04 - Xenial Xerus) com a versão mais recente do Solr devidamente instalada e pronta pra uso.
 
 Para acessar a interface web de administração do Solr, acesse [http://localhost:8983/solr](http://localhost:8983/solr), de qualquer navegador.
 
-## Glossário
+## Terminologia
 
-O Solr traz consigo alguns termos desconhecidos para quem não está habituado com sistemas indexadores e buscadores de informações. Por isso, é necessário entender esses termos antes de prosseguir com as configurações, idexação de documentos e realização de consultas.
+O Solr traz consigo alguns termos desconhecidos para quem não está habituado com sistemas indexadores e buscadores de informações. Por isso, é necessário entender esses termos antes de prosseguir com as configurações, indexação de documentos e realização de consultas.
+
+### Indexar
+
+É um dos processos mais básicos e importantes do Solr. Indexar é o processo de adicionar conteúdo ao Solr, tornando-o pesquisável.
 
 ### Query
 
 ### Hit highlighting
 
 ### Facet
+
+### Relevance (Relevância)
 
 ## Criando, alterando e deletando Cores
 
@@ -189,13 +206,15 @@ Indexando um PDF específico:
 $ bin/post -c <corename> <documento>
 ```
 
-Você também pode indexar todos os PDFs contidos numa pasta:
+Você também pode indexar todos os documentos contidos numa pasta:
 
 ```bash
 $ bin/post -c <corename> <pasta>
 ```
 
 ### Indexando Site
+
+Uma das habilidades do Solr é indexar sites.
 
 ```bash
 $ sudo su - solr -c "/opt/solr/bin/solr create -c <corename> -n data_driven_schema_configs"
@@ -233,9 +252,9 @@ $ export ftp_proxy=<ip>:<porta>
 
 # Sobre esta documentação
 
-**É importante ressaltar que esta não é uma documentação oficial sobre o Apache Solr e nem intenciona ser.** 
+**É importante ressaltar que esta não é uma documentação oficial sobre o Apache Solr e nem intenciona ser.**
 
-Ao me deparar, na instituição pública na qual estou estagiando, com a tarefa de implemntar o Apache Solr para melhorar as bucas no site e documentos gerados pela instituição, como Diário Oficial Eletrônico e Atos Normativos, comecei a pesquisar pelo termo, que até então desconhecia. Tudo que eu achava pertinente, seja teórico ou prático, durante meu aprendizado, fui anotado para não me perder em meio a tantos fontes de informações. Então, diante da realidade que há pouquissíma documentação em Português e da elevada quantidade de material que eu tinha escrito, resolvi reescrever esse conteúdo de forma organizada e disponibilizá-lo no meu GitHub, de forma que talvez venha ajudar outras pessoas.
+Ao me deparar, na instituição pública na qual estou estagiando, com a tarefa de implemntar o Apache Solr para melhorar as bucas no site e documentos gerados pela instituição, como Diário Oficial Eletrônico e Atos Normativos, comecei a pesquisar pelo termo, que até então desconhecia. Tudo que eu achava pertinente, seja teórico ou prático, durante meu aprendizado, fui anotando para não me perder em meio a tantas fontes de informações. Então, diante da realidade que há pouquissíma documentação sobre o Solr em Português e da elevada quantidade de material que eu tinha escrito, resolvi reescrever esse conteúdo de forma organizada e disponibilizá-lo no meu GitHub, pois pode vir a contribuir para o aprendizado de outros interessados.
 
 ## Como contribuir
 
@@ -243,11 +262,11 @@ Ao me deparar, na instituição pública na qual estou estagiando, com a tarefa 
 
 ## Referências Bibliográficas
 
-- Solr Reference Guide
+- [Solr Reference Guide 6.3](https://archive.apache.org/dist/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf)
 - HowToForge
 
 ## Notas de Copyright
 
-    Copyright (c) 2016-2017, Adjamilton Junior. Essa documentação é regida sobe a licença GPLv3.
+    Copyright (c) 2016-2017, Adjamilton Junior. Essa documentação é regida sob a licença GPLv3.
     
-    Lucene é marca registrada da Apache Foundation. Java é marca registrada da Oracle Inc.
+    Lucene é marca registrada da Apache Foundation. Java é marca registrada da Oracle Inc. macOs e Windows são marcas registradas de seus respectivos proprietários.
