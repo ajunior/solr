@@ -27,11 +27,12 @@ Lista de Conteúdo
     * [Instalando o Java no Fedora](#instalando-o-java-no-fedora)
     * [Instalando o Java no Ubuntu](#instalando-o-java-no-ubuntu)
     * [Instalando o Solr](#instalando-o-solr)
-        * [Bainxando o Solr](#baixando-o-solr)
+        * [Bainxando](#baixando-o-solr)
         * [Descompactando](#descompactando)
+        * [Executando](#executando)
     * [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao)
         * [Instalação concluída](#instalacao-concluida)
-        * [Manipulando o serviço Solr](#manipulando-o-servico)
+        * [Manipulando o serviço](#manipulando-o-servico)
     * [Instalando o Solr via Vagrant](#instalando-o-solr-via-vagrant)
 * [Entendendo os Cores](#entendendo-os-cores)
 * [Sobre esta Documentação](#sobre-esta-documentacao)
@@ -95,7 +96,7 @@ $ sudo apt-get install default-jre
 
 Não há pacotes da versão 6 do Solr disponíveis nas distribuições, portanto, teremos que baixar e instalar manualmente. Mas não se preocupe, os desenvolvedores do Solr fizeram um excelente trabalho de forma que é extremamente simples proceder com a instalação.
 
-### Baixando o Solr
+### Baixando
 
 ```bash
 $ sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -O /tmp/solr-6.3.0.tgz
@@ -113,7 +114,7 @@ O arquivo baixado estará salvo na pasta ```/tmp```.
 $ tar xzf /tmp/solr-6.3.0.tgz
 ```
 
-### Executando o Solr
+### Executando
 
 ```bash
 $ /tmp/solr-6.3.0/solr start
@@ -140,7 +141,7 @@ $ rm /tmp/solr-6.3.0.tgz
 $ rm -rf /tmp/solr-6.3.0.tgz
 ```
 
-### Instalação Concluída
+### Instalação concluída
 
 Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip ou domínio>:8983/solr``` se for acessar remotamente o servidor que está hospedando o Solr.
 
@@ -228,9 +229,7 @@ Ao me deparar, na instituição pública na qual estou estagiando, com a tarefa 
 
 ## Como contribuir
 
-Como citado acima, essa documentação é baseada nas leituras do guia de referência, documentações correlatas e experiência prática, então, se você aprendeu algo novo ou uma forma melhor ou mais fácil de fazer alguma tarefa descrita aqui, *fork* este repositório, faça as devidas alterações e mande um *Pull Request*, que eu vou analisar e aceitá-lo se estiver dentro dos padrões. Correções ortográficas ou outras correções menores devem ser enviadas via [issue track]().
-
-Dúvidas e sugestões também são bem-vindas e podem ser enviadas via *[issue tracker]()*.
+É de grande valia qualquer contribuição que possa tornar esse manual melhor. Então, se você tem algum conhecimento teórico ou prático que possa enriquecer essa documentação ou quer corrigir alguma informação incorreta, não se acanhe, *fork* este repositório, faça as devidas alterações e mande um *Pull Request*, que eu vou analisar e, se possível, aceitá-lo. Correções ortográficas ou outras correções menores, bem como dúvidas e sugestões, devem ser enviadas via [issue track](https://github.com/ajunior/solr/issues/).
 
 ## Referências Bibliográficas
 
