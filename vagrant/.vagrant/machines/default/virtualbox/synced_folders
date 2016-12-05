@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www/html/src":{"guestpath":"/var/www/html/src","hostpath":"C:/Users/aalmeida/workspace/solr/vagrant","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/aalmeida/workspace/solr/vagrant","disabled":false,"__vagrantfile":true}}}

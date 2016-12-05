@@ -1,32 +1,56 @@
+# encoding: utf-8
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/xenial64"
+VAGRANTFILE_API_VERSION = "2"
 
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.synced_folder ".", "/var/www/html/src"
+    # Configurações dp Proxy do TCE
+    # Formato: http://<usuario>:senha@<ip>:<porta>
+    config.proxy.enabled = true  # => all applications enabled
 
-  config.vm.provider "virtualbox" do |vb|
-    vb.name = "Apache Solr VM"
-  end
+    if Vagrant.has_plugin?("vagrant-proxyconf")
+      config.proxy.http     = "http://aalmeida:thS2jr@10.10.11.15:8080"
+      config.proxy.https    = "http://aalmeida:thS2jr@10.10.11.15:8080"
+      config.proxy.no_proxy = "localhost,127.0.0.1,.example.com"
+      config.apt_proxy.http = "http://aalmeida:thS2jr@10.10.11.15:8080"
+      config.apt_proxy.https = "DIRECT"
+    end
 
-  config.vm.provision "shell", inline: <<-SHELL
-    echo "Instalando JRE 1.8 (OpenJDK)"
-    sudo apt-get -y default-jre > /dev/null
+    config.vm.box = "ubuntu/xenial64"
+    config.vm.network "forwarded_port", guest: 80, host: 8080
+    config.vm.synced_folder "./", "/var/www/html/src"
+    
+    config.vm.provider "virtualbox" do |vb|
+      vb.name = "Apache Solr VM"
+    end
 
-    echo "Baixando o Solr 6.0.3"
-    sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -o /tmp/solr-6.3.0.tgz
+    # Configurando SSH 
+    # Evita o erro 'default: stdin: is not a tty'
+    config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
-    echo "Descompactando o script de instalação"
-    tar xzf /tmp/solr-6.3.0.tgz solr-6.3.0/bin/install_solr_service.sh --strip-components=2  > /dev/null
+    config.vm.provision "shell", inline: <<-SHELL
+      echo "Instalando JRE 1.8 (OpenJDK)"
+      sudo apt-get install -y default-jre > /dev/null
 
-    echo "Instalando o Solr"
-    sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
+      echo "https_proxy = http://aalmeida:thS2jr@10.10.11.15:8080/" >> /etc/wgetrc
+      echo "http_proxy = http://aalmeida:thS2jr@10.10.11.15:8080/" >> /etc/wgetrc       
+      echo "ftp_proxy = http://aalmeida:thS2jr@10.10.11.15:8080/" >> /etc/wgetrc
+      echo "use_proxy = on" >> /etc/wgetrc
 
-    echo "Instalação concuída."
-    echo "URL: http://localhost:8983/solr"
+      echo "Baixando o Solr 6.0.3"
+      sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz
 
-  SHELL
+      echo "Descompactando o script de instalação"
+      tar xzf solr-6.3.0.tgz solr-6.3.0/bin/install_solr_service.sh --strip-components=2  > /dev/null
+
+      echo "Instalando o Solr"
+      sudo ./install_solr_service.sh solr-6.3.0.tgz
+
+      echo "Instalação concuída."
+      echo "URL: http://localhost:8983/solr"
+
+      sudo ifconfig
+    SHELL
 end
