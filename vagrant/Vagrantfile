@@ -1,0 +1,32 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/xenial64"
+
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  config.vm.synced_folder ".", "/var/www/html/src"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "Apache Solr VM"
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    echo "Instalando JRE 1.8 (OpenJDK)"
+    sudo apt-get -y default-jre > /dev/null
+
+    echo "Baixando o Solr 6.0.3"
+    sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -o /tmp/solr-6.3.0.tgz
+
+    echo "Descompactando o script de instalação"
+    tar xzf /tmp/solr-6.3.0.tgz solr-6.3.0/bin/install_solr_service.sh --strip-components=2  > /dev/null
+
+    echo "Instalando o Solr"
+    sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
+
+    echo "Instalação concuída."
+    echo "URL: http://localhost:8983/solr"
+
+  SHELL
+end

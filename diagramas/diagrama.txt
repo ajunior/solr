@@ -1,0 +1,9 @@
+@startuml
+
+actor Usuario
+Usuario -> "Ferramenta de busca na página inicial"
+"Ferramenta de busca na página inicial" -> "Página de Resultado de Buscas"
+"Página de Resultado de Buscas" -> Usuario
+
+
+@enduml
