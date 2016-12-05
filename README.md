@@ -125,9 +125,9 @@ Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessa
 
 ## Solr via Vagrant
 
-Para abstrair o processo de instalação e partir direto para prática, você pode criar uma Máquina Virtual com o [Vagrant](http://vagrant.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/vagrant/Vagrantfile) escrito especialmente para testar o funcionamento e configurações do Solr. Isso resultará numa instalação automatizada de um sistema GNU/Linux com a versão 6.3.0 do Solr devidamente instalada e pronta pra uso.
+Para abstrair o processo de instalação e partir direto para prática, você pode criar uma Máquina Virtual com o [Vagrant](http://vagrant.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/vagrant/Vagrantfile), que resultará numa instalação automatizada de um sistema GNU/Linux (Ubunto 16.04) com a versão mais recente do Solr devidamente instalada e pronta pra uso.
 
-Para acessar a interface web de administração do Solr, acesse ```http://<ip da vm>:8983/solr```, de qualquer navegador.
+Para acessar a interface web de administração do Solr, acesse [http://localhost:8983/solr](http://localhost:8983/solr), de qualquer navegador.
 
 ## Criando Cores
 
