@@ -2,7 +2,7 @@
 
 O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob a biblioteca [Apache Lucene](http://lucene.apache.org/).
 
-Basicamente, o Solr permite a indexação de documentos que podem ser encontrados mediante a correspondência com uma busca textual, ou como o [Guia de Referência](https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf) diz "O Solr foi criado para localizar documentos que correspondem a consultas." Entre os documentos que podem ser indexado, estão: **xml, json, csv, pdf, doc, docx, ppt, pptx, xls, xlsx, odt, odp, ods, ott, otp, ots, rtf, htm, html, txt** e **log**.
+Basicamente, o Solr permite a indexação de documentos que podem ser encontrados mediante a correspondência com uma busca textual, ou como o [Guia de Referência](https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf) diz "O Solr foi criado para localizar documentos que correspondem a consultas." Entre os documentos que podem ser indexados, estão: **xml, json, csv, pdf, doc, docx, ppt, pptx, xls, xlsx, odt, odp, ods, ott, otp, ots, rtf, htm, html, txt** e **log**.
 
 ### Quem está usando Solr
 
@@ -16,7 +16,7 @@ Solr é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está e
 
 ### Alternativas
 
-Existem algumas alternativas ao Solr, como o [SphinX]() e o , mas a principal é o [Elasticsearch](https://www.elastic.co/), que também é desenvolvido com base na biblioteca Lucene. Cada um, Solr e Elasticsearch, tem suas vantagens e desvantages em relação ao outro.
+Existem algumas alternativas ao Solr, como o [SphinX](http://sphinxsearch.com/) e o [Elasticsearch](https://www.elastic.co/). Cada um tem suas vantagens e desvantages em relação aos outros, mas todos são excelentes opções de servidores de busca.
 
 ### Licença
 
