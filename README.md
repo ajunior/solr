@@ -1,12 +1,14 @@
-# Apache Solr: Introdução, Instalação, Indexação e Consultas
+# Apache Solr: Manual Colaborativo
 
-O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob a biblioteca [Apache Lucene](http://lucene.apache.org/)(TM).
+O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob a biblioteca [Apache Lucene](http://lucene.apache.org/).
 
-Basicamente, o Solr permite a indexação de documentos que podem ser encontrados mediante a correspondência com uma busca textual, ou como o [Guia de Referência](https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf) diz "O Solr foi criado para localizar documentos que correspondem a consultas." Entre os documentos que podem ser indexado, estão: **xml, json, csv, pdf, doc, docx, ppt, pptx, xls, xlsx, odt, odp, ods, ott, otp, ots, rtf, htm, html, txt e log**.
+Basicamente, o Solr permite a indexação de documentos que podem ser encontrados mediante a correspondência com uma busca textual, ou como o [Guia de Referência](https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf) diz "O Solr foi criado para localizar documentos que correspondem a consultas." Entre os documentos que podem ser indexado, estão: **xml, json, csv, pdf, doc, docx, ppt, pptx, xls, xlsx, odt, odp, ods, ott, otp, ots, rtf, htm, html, txt** e **log**.
 
 ### Quem está usando Solr
 
-Diversas empresas usam o Solr para indexar conteúdo, provendo uma poderosa ferramenta de busca ao seus usuários. Entre essas empresas estão gigantes como a **Apple, Netflix, Disney, AT&T, CNET, Cisco, AOL, NASA, MTV, Goldman Sachs, Cloudspace, Sears, GameSpot, eHarmony, TicketMaster, The Guardian, eBay, StubHub, IBM, Adobe, Best Buy, DuckDuckGo e o Instagram**. Pelas empresas citadas, já dá pra ter ideia do nível de qualidade dessa ferramenta. Veja a [lista completa](https://wiki.apache.org/solr/PublicServers). Solr é responsável por potencializar o mecanismo de buscas de muitos dos maiores sites da Internet.
+O Solr é responsável por potencializar o mecanismo de buscas de muitos dos maiores sites da Internet. Diversas empresas usam o Solr para indexar seus conteúdos, provendo uma poderosa ferramenta de busca aos usuários. Entre essas empresas estão gigantes como a **Apple, Netflix, Disney, AT&T, CNET, Cisco, AOL, NASA, MTV, Goldman Sachs, Cloudspace, Sears, GameSpot, eHarmony, TicketMaster, The Guardian, eBay, StubHub, IBM, Adobe, Best Buy, DuckDuckGo e o Instagram**. Pelas empresas citadas, já dá pra ter ideia do nível de qualidade dessa ferramenta.
+
+* Veja a [lista](https://wiki.apache.org/solr/PublicServers) de sites que usam Solr.
 
 ### Principais caracteristicas
 
@@ -14,11 +16,11 @@ Solr é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está e
 
 ### Alternativas
 
-Existem algumas alternativas ao Solr, mas a principal é o [Elasticsearch](https://www.elastic.co/), que também é desenvolvido sob a biblioteca Lucene.
+Existem algumas alternativas ao Solr, como o [SphinX]() e o , mas a principal é o [Elasticsearch](https://www.elastic.co/), que também é desenvolvido com base na biblioteca Lucene. Cada um, Solr e Elasticsearch, tem suas vantagens e desvantages em relação ao outro.
 
 ### Licença
 
-O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), que resumidamente permite o **livre uso, redistribuição e alteração, sem exigência de reciprocidade**.
+O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), que resumidamente permite o **livre uso, redistribuição e alteração sem exigência de reciprocidade**.
 
 Lista de Conteúdo
 ======
