@@ -1,18 +1,26 @@
 # Apache Solr: Manual Colaborativo
 
-O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob a biblioteca [Apache Lucene](http://lucene.apache.org/).
+O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob a biblioteca [Apache Lucene](http://lucene.apache.org/). Em outras palavras, é uma ferramenta de indexação de documentos e pesquisa de dados.
 
 Basicamente, o Solr permite a indexação de documentos que podem ser encontrados mediante a correspondência com uma busca textual, ou como o [Guia de Referência](https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf) diz "O Solr foi criado para localizar documentos que correspondem a consultas." Entre os documentos que podem ser indexados, estão: **xml, json, csv, pdf, doc, docx, ppt, pptx, xls, xlsx, odt, odp, ods, ott, otp, ots, rtf, htm, html, txt** e **log**.
 
+Solr é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está em sua versão [6.3.0](http://www-us.apache.org/dist/lucene/solr/6.3.0), que foi lançada em 8 de novembro de 2016, conforme a _[nota de lançamento](http://lucene.apache.org/solr/news.html)_.
+
 ### Quem está usando Solr
 
-O Solr é responsável por potencializar o mecanismo de buscas de muitos dos maiores sites da Internet. Diversas empresas usam o Solr para indexar seus conteúdos, provendo uma poderosa ferramenta de busca aos usuários. Entre essas empresas estão gigantes como a **Apple, Netflix, Disney, AT&T, CNET, Cisco, AOL, NASA, MTV, Goldman Sachs, Cloudspace, Sears, GameSpot, eHarmony, TicketMaster, The Guardian, eBay, StubHub, IBM, Adobe, Best Buy, DuckDuckGo e o Instagram**. Pelas empresas citadas, já dá pra ter ideia do nível de qualidade dessa ferramenta.
+O Solr é responsável por potencializar o mecanismo de buscas de muitos dos maiores sites da Internet. Diversas empresas usam o Solr para indexar seus conteúdos, provendo uma poderosa ferramenta de busca aos usuários.
+
+Entre essas empresas estão gigantes como a **Apple, Netflix, Disney, AT&T, CNET, Cisco, AOL, NASA, MTV, Goldman Sachs, Cloudspace, Sears, GameSpot, eHarmony, TicketMaster, The Guardian, eBay, StubHub, IBM, Adobe, Best Buy, DuckDuckGo, Instagram e a Casa Branca (sede do governo dos EUA)**. No Brasil, podemos destacar o [Apontador](http://www.apontador.com.br), contando com 12 milhões de documentos e aproximadamente 5.5 milhões de requisições por dia, distribuído em 4 servidores.
 
 * Veja a [lista](https://wiki.apache.org/solr/PublicServers) de sites que usam Solr.
 
-### Principais caracteristicas
+### Recursos
 
-Solr é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está em sua versão [6.3.0](http://www-us.apache.org/dist/lucene/solr/6.3.0), que foi lançada em 8 de novembro de 2016, conforme a _[nota de lançamento](http://lucene.apache.org/solr/news.html)_. As principais características incluem uma poderosa busca textual, hit highlighting, faceted search and analytics, rich document parsing, busca geoespacial, extensive REST APIs as well as parallel SQL. Solr is enterprise grade, seguro e altamente escalável, providing fault tolerant distributed search and indexing.
+Os principais recursos do Solr, incluem: busca textual, hit highlighting, busca facetada e analitica, rich document parsing, busca geoespacial, extensive REST APIs as well as parallel SQL. Solr is enterprise grade, seguro e altamente escalável, providing fault tolerant distributed search and indexing.
+
+### Vantagens
+
+Não ter dependências, além do próprio Java, é uma entre as muitas vantagens que o Solr possui.
 
 ### Alternativas
 
@@ -42,6 +50,7 @@ Lista de Conteúdo
 * [Terminologia](#terminologia)
     * [Indexing (Indexação)](#indexing-indexacao)
     * [Query](#query)
+    * [Faceting](#faceting)
 * [Criando, alterando e deletando Cores](#criando-alterando-e-deletando-cores)
 * [Sobre esta Documentação](#sobre-esta-documentacao)
     * [Como contribuir](#como-contribuir)
@@ -178,7 +187,7 @@ Para acessar a interface web de administração do Solr, acesse [http://localhos
 
 ## Terminologia
 
-O Solr traz consigo alguns termos desconhecidos para quem não está habituado com sistemas indexadores e buscadores de informações. Por isso, é necessário entender esses termos antes de prosseguir com as configurações, indexação de documentos e realização de consultas.
+O Solr traz consigo alguns termos desconhecidos para quem não está habituado com ferramentas de indexação e pesquisa de dados. Por isso, é necessário entender esses termos antes de prosseguir com as configurações, indexação de documentos e realização de consultas.
 
 ### Indexing (Indexação)
 
@@ -188,15 +197,23 @@ O Solr traz consigo alguns termos desconhecidos para quem não está habituado c
 
 ### Hit highlighting
 
-### Facet
+### Faceting
+
+É o número de vezes que um termo aparece em um documento.
 
 ### Relevance (Relevância)
 
 Determina o nível de satisfação do resultado de uma consulta, para o usuário.
 
-## Criando, alterando e deletando Cores
+## Cores
 
-## Indexando documentos
+### Criando
+
+### Alterando
+
+### Removendo
+
+## Indexação
 
 A indexação de conteúdos é feito pelo programa ```post```, que fica localizado na pasta ```bin```, dentro do diterório do Solr.
 
@@ -225,6 +242,8 @@ $ bin/post -c <nome_do_core> <url> -recursive 2 -delay 5
 ```
 
 ## Consultas
+
+O Solr permite o uso de filtros avançados de buscas, permitindo a utilização de filtros condicionais, wildcards, pesquisa por proximidade e operadores booleanos. 
 
 ## Configurações específicas do TCE-PB
 
