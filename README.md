@@ -1,5 +1,37 @@
 # Apache Solr: Manual Colaborativo
 
+<blockquote>"Those that know, do. Those that understand, teach." -- Aristotle</blockquote>
+<blockquote>"It is not only one person's work, it's really a partnership and collaboration during all these years." -- Christo</blockquote>
+
+## Índice
+
+* [Introdução](#introducao)
+* [Instalação](#instalacao)
+    * [Verificando se o Java está instalado](#verificando-se-o-java-esta-instalado)
+    * [Instalando Java no CentOS](#instalando-java-no-centos)
+    * [Instalando Java no Debian](#instalando-java-no-debian)
+    * [Instalando Java no Fedora](#instalando-java-no-fedora)
+    * [Instalando Java no Ubuntu](#instalando-java-no-ubuntu)
+    * [Instalando o Solr](#instalando-o-solr)
+        * [Baixando](#baixando-o-solr)
+        * [Descompactando](#descompactando)
+        * [Executando](#executando)
+    * [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao)
+        * [Instalação concluída](#instalacao-concluida)
+        * [Manipulando o serviço](#manipulando-o-servico)
+    * [Instalando o Solr via Vagrant](#instalando-o-solr-via-vagrant)
+* [Terminologia](#terminologia)
+    * [Indexing (Indexação)](#indexing-indexacao)
+    * [Query](#query)
+    * [Faceting](#faceting)
+* [Criando, alterando e deletando Cores](#criando-alterando-e-deletando-cores)
+* [Sobre esta Documentação](#sobre-esta-documentacao)
+    * [Como contribuir](#como-contribuir)
+    * [Referências Bibliográficas](#referencias-bibliograficas)
+    * [Notas de Copyright](#notas-de-copyright)
+
+# Introdução
+
 O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www.thefreedictionary.com/solar)), segundo a definição constante no site oficial do projeto, é uma plataforma _open source_ de busca textual, muito popular, desenvolvida sob a biblioteca [Apache Lucene](http://lucene.apache.org/). Em outras palavras, é uma ferramenta de indexação de documentos e pesquisa de dados.
 
 Basicamente, o Solr permite a indexação de documentos que podem ser encontrados mediante a correspondência com uma busca textual, ou como o [Guia de Referência](https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf) diz "O Solr foi criado para localizar documentos que correspondem a consultas." Entre os documentos que podem ser indexados, estão: **xml, json, csv, pdf, doc, docx, ppt, pptx, xls, xlsx, odt, odp, ods, ott, otp, ots, rtf, htm, html, txt** e **log**.
@@ -30,32 +62,6 @@ Existem algumas alternativas ao Solr, como o [SphinX](http://sphinxsearch.com/) 
 
 O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), que resumidamente permite o **livre uso, redistribuição e alteração sem exigência de reciprocidade**.
 
-Lista de Conteúdo
-======
-
-* [Instalação](#instalacao)
-    * [Verificando se o Java está instalado](#verificando-se-o-java-esta-instalado)
-    * [Instalando o Java no CentOS](#instalando-o-java-no-centos)
-    * [Instalando o Java no Debian](#instalando-o-java-no-debian)
-    * [Instalando o Java no Fedora](#instalando-o-java-no-fedora)
-    * [Instalando o Java no Ubuntu](#instalando-o-java-no-ubuntu)
-    * [Instalando o Solr](#instalando-o-solr)
-        * [Baixando](#baixando-o-solr)
-        * [Descompactando](#descompactando)
-        * [Executando](#executando)
-    * [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao)
-        * [Instalação concluída](#instalacao-concluida)
-        * [Manipulando o serviço](#manipulando-o-servico)
-    * [Instalando o Solr via Vagrant](#instalando-o-solr-via-vagrant)
-* [Terminologia](#terminologia)
-    * [Indexing (Indexação)](#indexing-indexacao)
-    * [Query](#query)
-    * [Faceting](#faceting)
-* [Criando, alterando e deletando Cores](#criando-alterando-e-deletando-cores)
-* [Sobre esta Documentação](#sobre-esta-documentacao)
-    * [Como contribuir](#como-contribuir)
-    * [Referências Bibliográficas](#referencias-bibliograficas)
-    * [Notas de Copyright](#notas-de-copyright)
 
 # Instalação
 
@@ -69,7 +75,7 @@ $ java -version
 
 Se a versão instalada do Java for igual ou superior a versão mínima exigida, avance para a seção [Instalando o Solr](#instalando-o-solr), caso contrário, siga os passos abaixo para instalação do Java, de acordo com a sua distribuição GNU/Linux.
 
-## Instalando o Java no CentOS
+## Instalando Java no CentOS
 
 **Versão: 7 (1511)**
 
@@ -79,7 +85,7 @@ $ sudo yum update
 $ sudo yum install java-1.8.0-openjdk.x86_64
 ```
 
-### Instalando o Java no Debian
+### Instalando Java no Debian
 
 **Versão: 8.6 (Jessie)**
 
@@ -90,7 +96,7 @@ $ su -c "apt-get update"
 $ su -c "apt-get install openjdk-8-jre"
 ```
 
-### Instalando o Java no Fedora
+### Instalando Java no Fedora
 
 **Versão: 24 (Server)**
 
@@ -100,7 +106,7 @@ $ sudo dnf upgrade
 $ sudo dnf install java-1.8.0-openjdk.x86_64
 ```
 
-### Instalando o Java no Ubuntu
+### Instalando Java no Ubuntu
 
 **Versão: 16.10 (Yakkety Yak) e 16.04.1 LTS (Xenial Xerus)**
 
@@ -145,12 +151,13 @@ $ /tmp/solr-6.3.0/solr start -p <nova porta>
 
 Para testar se o Solr está funcionando, acesse o endereço ```http://localhost:8983/solr/admin/ping```.
 
-## Instalando o Solr em ambiente de produção
+## Instalando em ambiente de produção
 
 Para facilitar a vida dos Administradores de Sistemas, o Solr vem com um script que procede a instalação dele como um serviço.
 Após baixar o Solr, descompacte o script instalador e o execute.
 
 ```bash
+$ sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -O /tmp/solr-6.3.0.tgz
 $ tar xzf /tmp/solr-6.3.0.tgz solr-6.3.0/bin/install_solr_service.sh --strip-components=2
 $ sudo ./install_solr_service.sh /tmp/solr-6.3.0.tgz
 ```
