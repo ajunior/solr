@@ -1,13 +1,13 @@
 # Apache Solr: Manual Colaborativo
 
-<blockquote>"Those that know, do. Those that understand, teach." -- Aristotle</blockquote>
-<blockquote>"It is not only one person's work, it's really a partnership and collaboration during all these years." -- Christo</blockquote>
+> "Those that know, do. Those that understand, teach." -- Aristotle
+> "It is not only one person's work, it's really a partnership and collaboration during all these years." -- Christo
 
 ## Índice
 
-* [Introdução](#introducao)
-* [Instalação](#instalacao)
-    * [Verificando se o Java está instalado](#verificando-se-o-java-esta-instalado)
+* [Introdução](#introdução)
+* [Instalação](#instalação)
+    * [Verificando se o Java está instalado](#verificando-se-o-java-está-instalado)
     * [Instalando Java no CentOS](#instalando-java-no-centos)
     * [Instalando Java no Debian](#instalando-java-no-debian)
     * [Instalando Java no Fedora](#instalando-java-no-fedora)
@@ -16,7 +16,7 @@
         * [Baixando](#baixando-o-solr)
         * [Descompactando](#descompactando)
         * [Executando](#executando)
-    * [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao)
+    * [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-produção)
         * [Instalação concluída](#instalacao-concluida)
         * [Manipulando o serviço](#manipulando-o-servico)
     * [Instalando o Solr via Vagrant](#instalando-o-solr-via-vagrant)
@@ -24,10 +24,13 @@
     * [Indexing (Indexação)](#indexing-indexacao)
     * [Query](#query)
     * [Faceting](#faceting)
-* [Criando, alterando e deletando Cores](#criando-alterando-e-deletando-cores)
-* [Sobre esta Documentação](#sobre-esta-documentacao)
+* [Cores](#cores)
+    * [Criando](#criando)
+    * [Alterando](#alterando)
+    * [Removendo](#removendo)
+* [Sobre esta Documentação](#sobre-esta-documentação)
     * [Como contribuir](#como-contribuir)
-    * [Referências Bibliográficas](#referencias-bibliograficas)
+    * [Referências Bibliográficas](#referências-bibliográficas)
     * [Notas de Copyright](#notas-de-copyright)
 
 # Introdução
@@ -48,7 +51,7 @@ Entre essas empresas estão gigantes como a **Apple, Netflix, Disney, AT&T, CNET
 
 ### Recursos
 
-Os principais recursos do Solr, incluem: busca textual, hit highlighting, busca facetada e analitica, rich document parsing, busca geoespacial, extensive REST APIs as well as parallel SQL. Solr is enterprise grade, seguro e altamente escalável, providing fault tolerant distributed search and indexing.
+Os principais recursos do Solr, incluem: busca textual, *hit highlighting*, busca facetada e analitica, rich document parsing, busca geoespacial, extensive REST APIs as well as parallel SQL. Solr is enterprise grade, seguro e altamente escalável, providing fault tolerant distributed search and indexing.
 
 ### Vantagens
 
@@ -61,7 +64,6 @@ Existem algumas alternativas ao Solr, como o [SphinX](http://sphinxsearch.com/) 
 ### Licença
 
 O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), que resumidamente permite o **livre uso, redistribuição e alteração sem exigência de reciprocidade**.
-
 
 # Instalação
 
@@ -85,7 +87,7 @@ $ sudo yum update
 $ sudo yum install java-1.8.0-openjdk.x86_64
 ```
 
-### Instalando Java no Debian
+## Instalando Java no Debian
 
 **Versão: 8.6 (Jessie)**
 
@@ -96,7 +98,7 @@ $ su -c "apt-get update"
 $ su -c "apt-get install openjdk-8-jre"
 ```
 
-### Instalando Java no Fedora
+## Instalando Java no Fedora
 
 **Versão: 24 (Server)**
 
@@ -106,7 +108,7 @@ $ sudo dnf upgrade
 $ sudo dnf install java-1.8.0-openjdk.x86_64
 ```
 
-### Instalando Java no Ubuntu
+## Instalando Java no Ubuntu
 
 **Versão: 16.10 (Yakkety Yak) e 16.04.1 LTS (Xenial Xerus)**
 
@@ -119,23 +121,19 @@ $ sudo apt-get install default-jre
 
 Não há pacotes da versão 6 do Solr disponíveis nas distribuições, portanto, teremos que baixar e instalar manualmente. Mas não se preocupe, os desenvolvedores do Solr fizeram um excelente trabalho de forma que é extremamente simples proceder com a instalação.
 
-### Baixando
-
 ```bash
+# Baixando
 $ sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -O /tmp/solr-6.3.0.tgz
+
+# Descompactando
+$ tar xzf /tmp/solr-6.3.0.tgz
 ```
 
 Lista completa de [espelhos](http://www.apache.org/mirrors/) da Apache Software Foudation.
 
 O arquivo baixado estará salvo na pasta ```/tmp```.
 
-### Descompactando
-
 **OBS:** Se você deseja instalar o Solr em um ambiente de produção, veja a seção [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao).
-
-```bash
-$ tar xzf /tmp/solr-6.3.0.tgz
-```
 
 ### Executando
 
@@ -151,7 +149,7 @@ $ /tmp/solr-6.3.0/solr start -p <nova porta>
 
 Para testar se o Solr está funcionando, acesse o endereço ```http://localhost:8983/solr/admin/ping```.
 
-## Instalando em ambiente de produção
+### Instalando em ambiente de produção
 
 Para facilitar a vida dos Administradores de Sistemas, o Solr vem com um script que procede a instalação dele como um serviço.
 Após baixar o Solr, descompacte o script instalador e o execute.
@@ -186,43 +184,57 @@ Uma vez que foi instalado como um serviço, você pode manipular a execução do
 | service solr restart | Reiniciar o serviço. |
 | service solr status | Verificar o status do serviço. |
 
-## Instalando o Solr via Vagrant
+### Solr via Vagrant
 
 Para abstrair o processo de instalação e partir direto para prática, você pode criar uma Máquina Virtual com o [Vagrant](http://vagrantup.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/blob/master/vagrant/Vagrantfile), que resultará numa instalação automatizada de um sistema GNU/Linux (Ubuntu 16.04 - Xenial Xerus) com a versão mais recente do Solr devidamente instalada e pronta pra uso.
 
 Para acessar a interface web de administração do Solr, acesse [http://localhost:8983/solr](http://localhost:8983/solr), de qualquer navegador.
 
+### Solr via Docker
+
+https://github.com/docker-solr/docker-solr
+
+### Solr via Homebrew
+
+Você pode instalar o Solr, no macOS, usando o [Homebrew](http://brew.sh/). No entanto, a versão **6.1.0** ainda é a única disponível.
+
+```bash
+brew install solr
+```
+
 ## Terminologia
 
 O Solr traz consigo alguns termos desconhecidos para quem não está habituado com ferramentas de indexação e pesquisa de dados. Por isso, é necessário entender esses termos antes de prosseguir com as configurações, indexação de documentos e realização de consultas.
 
-### Indexing (Indexação)
+<dl>
+    <dt>Indexing (Indexação)</dt>
+    <dd>É um dos processos mais básicos e importantes do Solr. Indexar é o processo de adicionar conteúdo ao Solr, tornando-o pesquisável.</dd>
 
-É um dos processos mais básicos e importantes do Solr. Indexar é o processo de adicionar conteúdo ao Solr, tornando-o pesquisável.
+    <dt>Query (Consulta)</dt>
+    <dd>...</dd>
 
-### Query (Consulta)
+    <dt>Hit highlighting</dt>
+    <dd>...</dd>
+    <dt>Faceting</dt>
+    <dd>É o número de vezes que um termo aparece em um documento.</dd>
 
-### Hit highlighting
-
-### Faceting
-
-É o número de vezes que um termo aparece em um documento.
-
-### Relevance (Relevância)
-
-Determina o nível de satisfação do resultado de uma consulta, para o usuário.
+    <dt>Relevance (Relevância)</dt>
+    <dd>Determina o nível de satisfação do resultado de uma consulta, para o usuário.</dd>
+</dl>
 
 ## Cores
 
-### Criando
+```bash
+# Criando um core
 
 ### Alterando
 
 ### Removendo
+```
 
-## Indexação
+## Adicionando Conteúdo
 
-A indexação de conteúdos é feito pelo programa ```post```, que fica localizado na pasta ```bin```, dentro do diterório do Solr.
+A indexação de conteúdos é feito pelo programa ```post```, que fica localizado no diretório ```bin```, dentro do diterório do Solr.
 
 ### PDF, DOC
 
@@ -233,10 +245,10 @@ Indexando um PDF específico:
 $ bin/post -c <nome_do_core> <documento>
 ```
 
-Você também pode indexar todos os documentos contidos numa pasta:
+Você também pode indexar todos os documentos contidos em um diretório:
 
 ```bash
-$ bin/post -c <nome_do_core> <pasta>
+$ bin/post -c <nome_do_core> <diretório>
 ```
 
 ### Indexando Site
@@ -251,8 +263,6 @@ $ bin/post -c <nome_do_core> <url> -recursive 2 -delay 5
 ## Consultas
 
 O Solr permite o uso de filtros avançados de buscas, permitindo a utilização de filtros condicionais, wildcards, pesquisa por proximidade e operadores booleanos. 
-
-## Configurações específicas do TCE-PB
 
 # Troubleshotting
 
