@@ -21,6 +21,8 @@
         * [Instalação concluída](#instalacao-concluida)
         * [Manipulando o serviço](#manipulando-o-servico)
     * [Instalando o Solr via Vagrant](#instalando-o-solr-via-vagrant)
+    * [Instalando Solr via Docker]()
+    * [Instalando Solr no macOS](#instalando-solr-no-macos)
 * [Terminologia](#terminologia)
     * [Indexing (Indexação)](#indexing-indexacao)
     * [Query](#query)
@@ -136,28 +138,36 @@ O arquivo baixado estará salvo na pasta ```/tmp```.
 
 **OBS:** Se você deseja instalar o Solr em um ambiente de produção, veja a seção [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao).
 
-### Iniciando, reiniciando e parando o Solr
+### Iniciando o Solr
 
 No diretório onde o Solr foi descompactado, execute o comando ```solr``` com o parâmetro ```start```.
 
 ```bash
 # Iniciando o Solr
-$ solr-6.3.0/solr start
+$ bin/solr start
 
 # Iniciando o Solr numa porta especifica
-$ solr start -p <nova_porta>
+$ bin/solr start -p <porta>
+```
 
+### Reiniciando o Solr
+
+```bash
 # Reiniciando o Solr
-$ solr restart
+$ bin/solr restart
 
 # Reiniciando a execução de uma instância rodando em uma porta específica
-$ solr restart -p <porta>
+$ bin/solr restart -p <porta>
+```
 
+### Parando a execução do Solr
+
+```bash
 # Parando a execução de uma instância rodando na porta padrão
-$ /bin/solr stop
+$ bin/solr stop
 
 # Parando a execução de uma instância rodando em uma porta específica
-$ /bin/solr stop -p 8983
+$ bin/solr stop -p 8983
 ```
 
 Por padrão, o Solr utiliza a porta 8983, no entanto, pode-se especificar uma outra porta usando o parametro ```-p``` na inicialização.
@@ -199,22 +209,22 @@ Uma vez que foi instalado como um serviço, você pode manipular a execução do
 | service solr restart | Reiniciar o serviço. |
 | service solr status | Verificar o status do serviço. |
 
-### Solr via Vagrant
+### Instalando Solr via Vagrant
 
 Para abstrair o processo de instalação e partir direto para prática, você pode criar uma Máquina Virtual com o [Vagrant](http://vagrantup.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/blob/master/vagrant/Vagrantfile), que resultará numa instalação automatizada de um sistema GNU/Linux (Ubuntu 16.04 - Xenial Xerus) com a versão mais recente do Solr devidamente instalada e pronta pra uso.
 
 Finalizado a instalação, acesse a interface web de administração do Solr, pelo endereço [http://localhost:8983/solr](http://localhost:8983/solr), de qualquer navegador web.
 
-### Solr via Docker
+### Instalando Solr via Docker
 
-https://github.com/docker-solr/docker-solr
+[https://github.com/docker-solr/docker-solr](https://github.com/docker-solr/docker-solr)
 
-### Solr via Homebrew
+### Instalando Solr no macOS
 
-Você pode instalar o Solr, no macOS, usando o gerenciador de pacotes [Homebrew](http://brew.sh/).
+Pode-se instalar o Solr no macOS usando as instruções de instalação descritas anteriormente ([Instalando o Solr](#instalando-o-solr) e [Instalando em ambiente de produção](#instalando-em-ambiente-de-produção)) ou via gerenciador de pacotes [Homebrew](http://brew.sh/). Nesse último caso, use o comando:
 
 ```bash
-brew install solr
+$ brew install solr
 ```
 
 ## Terminologia
@@ -224,16 +234,12 @@ O Solr traz consigo alguns termos desconhecidos para quem não está habituado c
 <dl>
     <dt>Indexing (Indexação)</dt>
     <dd>É um dos processos mais básicos e importantes do Solr. Indexar é o processo de adicionar conteúdo ao Solr, tornando-o pesquisável.</dd>
-
     <dt>Query (Consulta)</dt>
     <dd>...</dd>
-
     <dt>Hit highlighting</dt>
     <dd>...</dd>
-    
-    <dt>Faceting</dt>
+    <dt>Faceting Search (Busca Facetada)</dt>
     <dd>É o número de vezes que um termo aparece em um documento.</dd>
-
     <dt>Relevance (Relevância)</dt>
     <dd>Determina o nível de satisfação do resultado de uma consulta, para o usuário.</dd>
 </dl>
@@ -278,7 +284,7 @@ $ bin/post -c <nome_do_core> <url> -recursive 2 -delay 5
 
 ## Consultas
 
-O Solr permite o uso de filtros avançados de buscas, permitindo a utilização de filtros condicionais, wildcards, pesquisa por proximidade e operadores booleanos. 
+O Solr permite o uso de filtros avançados de buscas, permitindo a utilização de filtros condicionais, wildcards, pesquisa por proximidade e operadores booleanos.
 
 # Troubleshotting
 
