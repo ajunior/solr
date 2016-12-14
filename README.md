@@ -1,6 +1,7 @@
 # Apache Solr: Manual Colaborativo
 
 > "Those that know, do. Those that understand, teach." -- Aristotle
+
 > "It is not only one person's work, it's really a partnership and collaboration during all these years." -- Christo
 
 ## Índice
@@ -39,7 +40,7 @@ O [Apache Solr](http://lucene.apache.org/solr/) (se pronuncia [Solar](http://www
 
 Basicamente, o Solr permite a indexação de documentos que podem ser encontrados mediante a correspondência com uma busca textual, ou como o [Guia de Referência](https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf) diz "O Solr foi criado para localizar documentos que correspondem a consultas." Entre os documentos que podem ser indexados, estão: **xml, json, csv, pdf, doc, docx, ppt, pptx, xls, xlsx, odt, odp, ods, ott, otp, ots, rtf, htm, html, txt** e **log**.
 
-Solr é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está em sua versão [6.3.0](http://www-us.apache.org/dist/lucene/solr/6.3.0), que foi lançada em 8 de novembro de 2016, conforme a _[nota de lançamento](http://lucene.apache.org/solr/news.html)_.
+Solr é desenvolvida em [Java](https://www.oracle.com/java/index.html) e está em sua versão [6.3.0](http://www-us.apache.org/dist/lucene/solr/6.3.0), que foi lançada em 8 de novembro de 2016, conforme a _[nota de lançamento](http://lucene.apache.org/solr/news.html)_ publicada no site do projeto.
 
 ### Quem está usando Solr
 
