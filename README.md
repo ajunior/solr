@@ -16,7 +16,7 @@
     * [Instalando o Solr](#instalando-o-solr)
         * [Baixando](#baixando-o-solr)
         * [Descompactando](#descompactando)
-        * [Iniciando, reiniciando e parando o Solr](#iniciando,-reiniciando-e-parando-o-solr)
+        * [Iniciando, reiniciando e parando o Solr](#iniciando--reiniciando-e-parando-o-solr)
     * [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-produção)
         * [Instalação concluída](#instalacao-concluida)
         * [Manipulando o serviço](#manipulando-o-servico)
@@ -321,6 +321,7 @@ Ao me deparar, na instituição pública na qual estou estagiando, com a tarefa 
 * [How to install and configure Solr 6 on Ubuntu 16.04](https://www.howtoforge.com/tutorial/how-to-install-and-configure-solr-on-ubuntu-1604/#installing-the-solr-application)
 * [Solr and web site indexing to create a site search](http://stackoverflow.com/questions/2481031/solr-and-web-site-indexing-to-create-a-site-search)
 * [Apache Solr Ref. Guide (Unreleased Guide for Apache Solr 6.4)](https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide)
+* [Apache Solr by Ryan Wright](http://www.ryanwright.me/cookbook/apachesolr)
 
 ## Notas de Copyright
 
