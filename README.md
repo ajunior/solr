@@ -16,7 +16,7 @@
     * [Instalando o Solr](#instalando-o-solr)
         * [Baixando](#baixando-o-solr)
         * [Descompactando](#descompactando)
-        * [Executando](#executando)
+        * [Iniciando, reiniciando e parando o Solr](#iniciando,-reiniciando-e-parando-o-solr)
     * [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-produção)
         * [Instalação concluída](#instalacao-concluida)
         * [Manipulando o serviço](#manipulando-o-servico)
@@ -136,17 +136,31 @@ O arquivo baixado estará salvo na pasta ```/tmp```.
 
 **OBS:** Se você deseja instalar o Solr em um ambiente de produção, veja a seção [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao).
 
-### Executando
+### Iniciando, reiniciando e parando o Solr
+
+No diretório onde o Solr foi descompactado, execute o comando ```solr``` com o parâmetro ```start```.
 
 ```bash
-$ /tmp/solr-6.3.0/solr start
+# Iniciando o Solr
+$ solr-6.3.0/solr start
+
+# Iniciando o Solr numa porta especifica
+$ solr start -p <nova_porta>
+
+# Reiniciando o Solr
+$ solr restart
+
+# Reiniciando a execução de uma instância rodando em uma porta específica
+$ solr restart -p <porta>
+
+# Parando a execução de uma instância rodando na porta padrão
+$ /bin/solr stop
+
+# Parando a execução de uma instância rodando em uma porta específica
+$ /bin/solr stop -p 8983
 ```
 
 Por padrão, o Solr utiliza a porta 8983, no entanto, pode-se especificar uma outra porta usando o parametro ```-p``` na inicialização.
-
-```bash
-$ /tmp/solr-6.3.0/solr start -p <nova porta>
-```
 
 Para testar se o Solr está funcionando, acesse o endereço ```http://localhost:8983/solr/admin/ping```.
 
@@ -189,7 +203,7 @@ Uma vez que foi instalado como um serviço, você pode manipular a execução do
 
 Para abstrair o processo de instalação e partir direto para prática, você pode criar uma Máquina Virtual com o [Vagrant](http://vagrantup.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/blob/master/vagrant/Vagrantfile), que resultará numa instalação automatizada de um sistema GNU/Linux (Ubuntu 16.04 - Xenial Xerus) com a versão mais recente do Solr devidamente instalada e pronta pra uso.
 
-Para acessar a interface web de administração do Solr, acesse [http://localhost:8983/solr](http://localhost:8983/solr), de qualquer navegador.
+Finalizado a instalação, acesse a interface web de administração do Solr, pelo endereço [http://localhost:8983/solr](http://localhost:8983/solr), de qualquer navegador web.
 
 ### Solr via Docker
 
@@ -197,7 +211,7 @@ https://github.com/docker-solr/docker-solr
 
 ### Solr via Homebrew
 
-Você pode instalar o Solr, no macOS, usando o [Homebrew](http://brew.sh/). No entanto, a versão **6.1.0** ainda é a única disponível.
+Você pode instalar o Solr, no macOS, usando o gerenciador de pacotes [Homebrew](http://brew.sh/).
 
 ```bash
 brew install solr
@@ -216,6 +230,7 @@ O Solr traz consigo alguns termos desconhecidos para quem não está habituado c
 
     <dt>Hit highlighting</dt>
     <dd>...</dd>
+    
     <dt>Faceting</dt>
     <dd>É o número de vezes que um termo aparece em um documento.</dd>
 
@@ -303,8 +318,9 @@ Ao me deparar, na instituição pública na qual estou estagiando, com a tarefa 
 ## Referências Bibliográficas
 
 * [Solr Reference Guide 6.3](https://archive.apache.org/dist/lucene/solr/ref-guide/apache-solr-ref-guide-6.3.pdf)
-* HowToForge
+* [How to install and configure Solr 6 on Ubuntu 16.04](https://www.howtoforge.com/tutorial/how-to-install-and-configure-solr-on-ubuntu-1604/#installing-the-solr-application)
 * [Solr and web site indexing to create a site search](http://stackoverflow.com/questions/2481031/solr-and-web-site-indexing-to-create-a-site-search)
+* [Apache Solr Ref. Guide (Unreleased Guide for Apache Solr 6.4)](https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide)
 
 ## Notas de Copyright
 
