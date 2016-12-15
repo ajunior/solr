@@ -8,11 +8,12 @@
 
 * [Introdução](#introdução)
 * [Instalação](#instalação)
-    * [Verificando se o Java está instalado](#verificando-se-o-java-está-instalado)
-    * [Instalando Java no CentOS](#instalando-java-no-centos)
-    * [Instalando Java no Debian](#instalando-java-no-debian)
-    * [Instalando Java no Fedora](#instalando-java-no-fedora)
-    * [Instalando Java no Ubuntu](#instalando-java-no-ubuntu)
+    * [Instalando o Java](#instalando-o-java)
+        * [Verificando se o Java está instalado](#verificando-se-o-java-está-instalado)
+        * [CentOS](#centos)
+        * [Debian](#debian)
+        * [Fedora](#fedora)
+        * [Ubuntu](#ubuntu)
     * [Instalando o Solr](#instalando-o-solr)
         * [Baixando](#baixando-o-solr)
         * [Descompactando](#descompactando)
@@ -20,9 +21,11 @@
     * [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-produção)
         * [Instalação concluída](#instalacao-concluida)
         * [Manipulando o serviço](#manipulando-o-servico)
-    * [Instalando o Solr via Vagrant](#instalando-o-solr-via-vagrant)
-    * [Instalando Solr via Docker]()
-    * [Instalando Solr no macOS](#instalando-solr-no-macos)
+    * [Instalações alternativas](#instalações-alternativa)
+        * [Vagrant](#vagrant)
+        * [Docker](#docker)
+        * [Homebrew](#homebrew)
+* [Acessando o Painel de Administração](#acessando-o-painel-de-administração)
 * [Terminologia](#terminologia)
     * [Indexing (Indexação)](#indexing-indexacao)
     * [Query](#query)
@@ -72,7 +75,9 @@ O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICE
 
 O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) **1.8 ou superior**. A instalação do Solr é bem simples, mas em algumas distribuições GNU/Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação para Windows e macOS não serão demonstrados neste documento.
 
-## Verificando se o Java está instalado
+## Instalando o Java
+
+### Verificando se o Java está instalado
 
 ```bash
 $ java -version
@@ -80,7 +85,7 @@ $ java -version
 
 Se a versão instalada do Java for igual ou superior a versão mínima exigida, avance para a seção [Instalando o Solr](#instalando-o-solr), caso contrário, siga os passos abaixo para instalação do Java, de acordo com a sua distribuição GNU/Linux.
 
-## Instalando Java no CentOS
+### CentOS
 
 **Versão: 7 (1511)**
 
@@ -90,7 +95,7 @@ $ sudo yum update
 $ sudo yum install java-1.8.0-openjdk.x86_64
 ```
 
-## Instalando Java no Debian
+### Debian
 
 **Versão: 8.6 (Jessie)**
 
@@ -101,7 +106,7 @@ $ su -c "apt-get update"
 $ su -c "apt-get install openjdk-8-jre"
 ```
 
-## Instalando Java no Fedora
+### Fedora
 
 **Versão: 24 (Server)**
 
@@ -111,7 +116,7 @@ $ sudo dnf upgrade
 $ sudo dnf install java-1.8.0-openjdk.x86_64
 ```
 
-## Instalando Java no Ubuntu
+### Ubuntu
 
 **Versão: 16.10 (Yakkety Yak) e 16.04.1 LTS (Xenial Xerus)**
 
@@ -122,7 +127,7 @@ $ sudo apt-get install default-jre
 
 ## Instalando o Solr
 
-Não há pacotes da versão 6 do Solr disponíveis nas distribuições, portanto, teremos que baixar e instalar manualmente. Mas não se preocupe, os desenvolvedores do Solr fizeram um excelente trabalho de forma que é extremamente simples proceder com a instalação.
+O procedimento de instalação do Solr detalhado a seguir, é aplicável a sistemas [*Unix-like*](https://pt.wikipedia.org/wiki/Sistema_operacional_tipo_Unix) e, basicamente, se resume a baixar e descompactar o Solr. No entanto, há outras maneiras mais instuitivas de proceder a instalação, que tabém serão demonstradas.
 
 ```bash
 # Baixando
@@ -194,10 +199,6 @@ $ rm /tmp/solr-6.3.0.tgz
 $ rm -rf /tmp/solr-6.3.0.tgz
 ```
 
-### Instalação concluída
-
-Pronto! Se a instalação não retornar nenhum erro, você será capaz de acessar o painel de administração apontando seu navegador para ```http://localhost:8983/solr``` ou ```http://<ip ou domínio>:8983/solr``` se for acessar remotamente o servidor que está hospedando o Solr.
-
 ### Manipulando o serviço
 
 Uma vez que foi instalado como um serviço, você pode manipular a execução do Solr, pelo terminal, como qualquer outro serviço, podendo iniciar, parar, reinicar e verificar seu status, conforme os comandos abaixo relacionados:
@@ -209,25 +210,33 @@ Uma vez que foi instalado como um serviço, você pode manipular a execução do
 | service solr restart | Reiniciar o serviço. |
 | service solr status | Verificar o status do serviço. |
 
-### Instalando Solr via Vagrant
+### Instalações alternativas
 
-Para abstrair o processo de instalação e partir direto para prática, você pode criar uma Máquina Virtual com o [Vagrant](http://vagrantup.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/blob/master/vagrant/Vagrantfile), que resultará numa instalação automatizada de um sistema GNU/Linux (Ubuntu 16.04 - Xenial Xerus) com a versão mais recente do Solr devidamente instalada e pronta pra uso.
+#### Vagrant
+
+Para abstrair o processo de instalação e partir direto para prática, você pode criar uma [Máquina Virtual](https://pt.wikipedia.org/wiki/M%C3%A1quina_virtual) com o [Vagrant](http://vagrantup.com), usando esse [Vangrantfile](http://github.com/ajunior/solr/blob/master/vagrant/Vagrantfile), que resultará numa instalação automatizada de um sistema GNU/Linux (Ubuntu 16.04 - Xenial Xerus) com a versão mais recente do Solr devidamente instalada e pronta pra uso.
+
+**OBS:** É preciso ter o [VirtualBox](https://www.virtualbox.org/) instalado.
 
 Finalizado a instalação, acesse a interface web de administração do Solr, pelo endereço [http://localhost:8983/solr](http://localhost:8983/solr), de qualquer navegador web.
 
-### Instalando Solr via Docker
+#### Docker
 
 [https://github.com/docker-solr/docker-solr](https://github.com/docker-solr/docker-solr)
 
-### Instalando Solr no macOS
+#### Homebrew
 
-Pode-se instalar o Solr no macOS usando as instruções de instalação descritas anteriormente ([Instalando o Solr](#instalando-o-solr) e [Instalando em ambiente de produção](#instalando-em-ambiente-de-produção)) ou via gerenciador de pacotes [Homebrew](http://brew.sh/). Nesse último caso, use o comando:
+No macOS, uma alternativa bem simpes é instalar o Solr pelo gerenciador de pacotes [Homebrew](http://brew.sh/).
 
 ```bash
 $ brew install solr
 ```
 
-## Terminologia
+# Acessando o Painel de Administração
+
+O Solr possui um Painel de Administração, acessível via web. Concluída a instalação, acesse de qualquer navegador o endereço ```http://localhost:8983/solr``` ou ```http://<ip ou domínio>:8983/solr``` se for acessar remotamente o servidor que está hospedando o Solr.
+
+# Terminologia
 
 O Solr traz consigo alguns termos desconhecidos para quem não está habituado com ferramentas de indexação e pesquisa de dados. Por isso, é necessário entender esses termos antes de prosseguir com as configurações, indexação de documentos e realização de consultas.
 
@@ -244,7 +253,7 @@ O Solr traz consigo alguns termos desconhecidos para quem não está habituado c
     <dd>Determina o nível de satisfação do resultado de uma consulta, para o usuário.</dd>
 </dl>
 
-## Cores
+# Cores
 
 ```bash
 # Criando um core
