@@ -73,11 +73,13 @@ O Solr é regido pela [Licença Apache 2.0](https://www.apache.org/licenses/LICE
 
 # Instalação
 
-O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) **1.8 ou superior**. A instalação do Solr é bem simples, mas em algumas distribuições GNU/Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação para Windows e macOS não serão demonstrados neste documento.
+O Solr pode ser instalado em sistemas GNU/Linux, macOS e Windows. 
 
 ## Instalando o Java
 
-### Verificando se o Java está instalado
+Como é desenvolvido em Java, será preciso instalar o Ambiente de Exucação Java (JRE ou Java Runtime Environment) **1.8 ou superior**. A instalação do Solr é bem simples, mas em algumas distribuições GNU/Linux instalar o Java pode ser um pouco trabalhoso, portanto, será mostrando como proceder a instalação dessa dependência em 4 distribuições: [CentOS](https://www.centos.org/), [Debian](http://www.debian.org), [Fedora](https://getfedora.org/) e [Ubuntu](http://www.ubuntu.com). Pela facilidade, o processo de instalação para Windows e macOS não serão demonstrados neste documento.
+
+### Verificando se o Java já está instalado
 
 ```bash
 $ java -version
@@ -85,7 +87,7 @@ $ java -version
 
 Se a versão instalada do Java for igual ou superior a versão mínima exigida, avance para a seção [Instalando o Solr](#instalando-o-solr), caso contrário, siga os passos abaixo para instalação do Java, de acordo com a sua distribuição GNU/Linux.
 
-### CentOS
+### Instalando o Java no CentOS
 
 **Versão: 7 (1511)**
 
@@ -95,7 +97,7 @@ $ sudo yum update
 $ sudo yum install java-1.8.0-openjdk.x86_64
 ```
 
-### Debian
+### Instalando o Java no Debian
 
 **Versão: 8.6 (Jessie)**
 
@@ -106,7 +108,7 @@ $ su -c "apt-get update"
 $ su -c "apt-get install openjdk-8-jre"
 ```
 
-### Fedora
+### Instalando o Java no Fedora
 
 **Versão: 24 (Server)**
 
@@ -116,7 +118,7 @@ $ sudo dnf upgrade
 $ sudo dnf install java-1.8.0-openjdk.x86_64
 ```
 
-### Ubuntu
+### Instalando o Java no Ubuntu
 
 **Versão: 16.10 (Yakkety Yak) e 16.04.1 LTS (Xenial Xerus)**
 
@@ -127,25 +129,23 @@ $ sudo apt-get install default-jre
 
 ## Instalando o Solr
 
-O procedimento de instalação do Solr detalhado a seguir, é aplicável a sistemas [*Unix-like*](https://pt.wikipedia.org/wiki/Sistema_operacional_tipo_Unix) e, basicamente, se resume a baixar e descompactar o Solr. No entanto, há outras maneiras mais instuitivas de proceder a instalação, que tabém serão demonstradas.
+O procedimento de instalação do Solr detalhado a seguir, é aplicável a sistemas [*Unix-like*](https://pt.wikipedia.org/wiki/Sistema_operacional_tipo_Unix) e, basicamente, se resume a baixar e descompactar o Solr. No entanto, há outras maneiras mais intuitivas de proceder a instalação, que também serão demonstradas, neste documento, posteriormente.
 
 ```bash
-# Baixando
+# Baixando o Solr
 $ sudo wget http://ftp.unicamp.br/pub/apache/lucene/solr/6.3.0/solr-6.3.0.tgz -O /tmp/solr-6.3.0.tgz
 
 # Descompactando
 $ tar xzf /tmp/solr-6.3.0.tgz
 ```
 
-Lista completa de [espelhos](http://www.apache.org/mirrors/) da Apache Software Foudation.
+Pode-se escolher baixar o Solr de outra fonte, veja a lista completa de [espelhos](http://www.apache.org/mirrors/) da Apache Software Foudation.
 
-O arquivo baixado estará salvo na pasta ```/tmp```.
-
-**OBS:** Se você deseja instalar o Solr em um ambiente de produção, veja a seção [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-producao).
+**OBS:** Se você deseja instalar o Solr em um ambiente de produção, veja a seção [Instalando o Solr em ambiente de produção](#instalando-o-solr-em-ambiente-de-produção).
 
 ### Iniciando o Solr
 
-No diretório onde o Solr foi descompactado, execute o comando ```solr``` com o parâmetro ```start```.
+Terminada a descompactação, vá para o diretório onde o Solr foi descompactado e siga as instruções a seguir.
 
 ```bash
 # Iniciando o Solr
@@ -232,9 +232,13 @@ No macOS, uma alternativa bem simpes é instalar o Solr pelo gerenciador de paco
 $ brew install solr
 ```
 
-# Acessando o Painel de Administração
+# Painel de Administração
 
 O Solr possui um Painel de Administração, acessível via web. Concluída a instalação, acesse de qualquer navegador o endereço ```http://localhost:8983/solr``` ou ```http://<ip ou domínio>:8983/solr``` se for acessar remotamente o servidor que está hospedando o Solr.
+
+## Segurança
+
+Por padrão, o acesso ao Painel de Administração não é protegido por senha, mas você pode configurar isso seguindo os passos a seguir.
 
 # Terminologia
 
@@ -337,6 +341,8 @@ Ao me deparar, na instituição pública na qual estou estagiando, com a tarefa 
 * [Solr and web site indexing to create a site search](http://stackoverflow.com/questions/2481031/solr-and-web-site-indexing-to-create-a-site-search)
 * [Apache Solr Ref. Guide (Unreleased Guide for Apache Solr 6.4)](https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide)
 * [Apache Solr by Ryan Wright](http://www.ryanwright.me/cookbook/apachesolr)
+* [StackOverflow: How to set Apache solr admin password](http://stackoverflow.com/questions/28043957/how-to-set-apache-solr-admin-password)
+* [Solr Glossary](https://cwiki.apache.org/confluence/display/solr/Solr+Glossary)
 
 ## Notas de Copyright
 
